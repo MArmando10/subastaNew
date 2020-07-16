@@ -15,11 +15,14 @@
         <li class="nav-item active">
           <a class="nav-link navigation-font" href=" {{ route('home') }} ">Home <span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item">
-          {{-- <a class="nav-link navigation-font" href="{{ route('balance.index') }}">Balance</a> --}}
-        </li>
+        {{-- <li class="nav-item">
+          <a class="nav-link navigation-font" href="{{ route('balance.index') }}">Balance</a>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link navigation-font" href=" {{ url('/Recargar') }} ">Recargar</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navigation-font" href=" {{ url('product') }} ">Productos</a>
         </li>
       @endauth
     </ul>

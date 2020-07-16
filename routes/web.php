@@ -20,3 +20,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::resource('/product','ProductController');
+
+// Route::resource('/offer','OfferController'); //offer.- oferta
+
+// Route::resource('/auction','AuctionController'); //auction.- subasta
+
