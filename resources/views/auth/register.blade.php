@@ -1,8 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.main')
+
+@section('body-config')
+ondragstart="return false;" ondrop="return false;" style="width:100%; background: none;"
+@endsection
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
+<div class="container container-auth">
+    <div class="row justify-content-center card-auth">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Register') }}</div>
@@ -62,8 +66,8 @@
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-6 offset-md-4 buttons-box-auth">
+                                <button type="submit" class="btn btn-primary button-auth">
                                     {{ __('Register') }}
                                 </button>
                             </div>
