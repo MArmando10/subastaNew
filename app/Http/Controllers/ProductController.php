@@ -13,6 +13,9 @@ use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Pagination\LengthAwarePaginator;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+
 class ProductController extends Controller
 {
     /**
@@ -20,14 +23,13 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request, Product $product)
     {
         $Product = DB::table('product')->Paginate(4);
-    
-        $Users = \App\User::all();
-        // dd($Users[0]->products[0]->ofertas[0]->product);
-        //dd($users[0]->products[0]->ofertas);
-        return view('products.index',compact('Users'));
+        
+        // $Users = \App\User::all();
+        // dd($Users);
+        return view('products.index',compact('product'));
     }
 
     /**

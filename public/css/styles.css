@@ -146,3 +146,10 @@
 .card-auth {
   width: 100%;
 }
+
+body{
+    margin-top: 5rem;   
+}
+.container{
+    background-color: white;
+}

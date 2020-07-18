@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark navigation-bar-style">
   <div class="navbar-brand back-logo">
-    <img class="img-fluid img-height" src="{{ asset('storage/logo/GoibetLogo.png')}}" alt="">
+    <img class="img-fluid img-height" src="{{ asset('storage/goideal.jpeg')}}" alt="" style="height: 40px">
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -18,11 +18,14 @@
         {{-- <li class="nav-item">
           <a class="nav-link navigation-font" href="{{ route('balance.index') }}">Balance</a>
         </li> --}}
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link navigation-font" href=" {{ url('/Recargar') }} ">Recargar</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link navigation-font" href=" {{ url('product') }} ">Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link navigation-font" href=" {{ url('product.create') }} ">Crear producto</a>
         </li>
       @endauth
     </ul>
@@ -32,7 +35,7 @@
       @auth
         <div class="credits-font">
           <div>
-            <img class="ico-exchange" src="{{ asset('storage/logo/MxBg.jpg')}}" alt="">
+            <img class="ico-exchange" src="{{ asset('storage/icono.jpg')}}" alt="" style="text-align: right;">
           </div>
           <div class="text-exchange">
             <span style="float: right;">{{ Auth::user()->total_credits }} $</span>
