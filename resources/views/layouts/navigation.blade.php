@@ -24,9 +24,9 @@
         <li class="nav-item">
           <a class="nav-link navigation-font" href=" {{ url('product') }} ">Productos</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link navigation-font" href=" {{ url('product.create') }} ">Crear producto</a>
-        </li>
+        {{-- <li class="nav-item">
+          <a class="nav-link navigation-font" href=" {{ url('product.create') }} ">Crear-producto</a>
+        </li> --}}
       @endauth
     </ul>
 
@@ -53,7 +53,7 @@
           </li>
         @endif
         @else
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown a:active">
             <a id="navbarDropdown" class="nav-link dropdown-toggle navigation-font" href="#" role="button"
               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
               {{ Auth::user()->name }} <span class="caret"></span>

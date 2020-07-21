@@ -15,7 +15,7 @@
     </style>
 <div class="row">
     <div class="col">
-   
+        
             <div class="row border-lines"></div> <!-- Linea superior -->
             <div class="table-responsive ">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
@@ -53,10 +53,10 @@
                                             @yield(layoutss::view:make('products.show'));
                                         @endif --}}
     
-                                    {{-- {{ Form::open(['route' => ['subasta.show', $product], 'method' => 'get'] ) }}
+                                    {{-- {{Form::open(['route' => ['product.show', $product], 'method' => 'get'] ) }}
                                     {{Form::submit('Más Detalles', ['class' => 'btn btn-secondary mb-5'])}}
     
-                                    {{ Form::close() }} --}}
+                                    {{Form::close()}} --}}
                                     {{-- @endforeach --}}
     
                                 </div>
