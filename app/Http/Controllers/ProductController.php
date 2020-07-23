@@ -25,8 +25,8 @@ class ProductController extends Controller
      */
     public function index(Request $request, Product $product)
     {
-        $Product = DB::table('product')->Paginate(4);
-        
+        $Product = DB::table('products')->Paginate(4);
+       
         // $Users = \App\User::all();
         // dd($Users);
         return view('products.index',compact('product'));
@@ -39,6 +39,9 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
+        // $Product = DB::table('product')->Paginate(4);
+        // $product = Product::all();
+
         // dd($request);
         return view('products.create');
     }
@@ -49,9 +52,9 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, Product $product)
     {
-        $request->validate([
+        $request->validate([ 
             'titulo' => 'required',
             'categoria'=>'required',
             'condicion'=>'required',
@@ -69,15 +72,12 @@ class ProductController extends Controller
             'Largo'=>'required',
             'Peso'=>'required',
             'geografi' => 'required',
-            'images' => 'required',
-        ]);
-        
+            'images' => 'required',  
+            ]);
         //dd($request);
-        $files = $request->file('images');
-
+        $files = $request->file('images'); 
         
         $producto = new Product();
-          
         $producto->titulo  =request()->input('titulo');
         $producto->categoria =request()->input('categoria');
         $producto->condicion =request()->input('condicion');
@@ -96,22 +96,18 @@ class ProductController extends Controller
         $producto->Peso =request()->input('Peso');
         $producto->geografi =request()->input('geografi');
         $producto->user_id = Auth::user()->id;
-
+            // dd($request);
         $producto->save();
 
-        foreach ($files as $file) {
-            //dd($file);
-            $archivo = Storage::putFile('storage', new File($file));
-            //dd($file);
-            $imagen = new imagen();
-            $imagen->nombre = $file->getClientOriginalName();
-            $imagen->url = $archivo;
-            $imagen->product_id = $producto->id;
+        // foreach ($files as $file) {
+        //     $archivo = Storage::putFile('storage', new File($file));
+        //     $imagen = new imagen();
+        //     $imagen->nombre = $file->getClientOriginalName();
+        //     $imagen->url = $archivo;
+        //     $imagen->product_id = $producto->id;
             
-            $imagen->save();
-        }
-
-        Session::flash('message','guardada con exito.');
+        //     $imagen->save();
+        // }
             return redirect()->route('product.index');
     }
 
@@ -123,7 +119,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view('products.show');
+        // return view('products.show');
     }
 
     /**

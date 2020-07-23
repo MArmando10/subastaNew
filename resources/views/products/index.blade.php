@@ -17,9 +17,11 @@
     <div class="col">
         
             <div class="row border-lines"></div> <!-- Linea superior -->
+
             <div class="table-responsive ">
+
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <div class="container ">
+                    <div class="container">
                         {{-- @foreach ($Users as $user)
                         @foreach ( $user->products as $product) --}}
                         <div class="row intro">
@@ -42,8 +44,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-3 tamle">
-                                    <p class="card-text">{{$product->descripcion}} descripcion</p>
-                                    <p class="card-text">{{$product->precioReserva}} precio Reserva</p>
+                                    {{-- <p class="card-text">{{$product->descripcion}} descripcion</p> --}}
+                                    {{-- <p class="card-text">{{$product->precioReserva}} precio Reserva</p> --}}
     
                                     {{-- @foreach ($products as $product)
                                         @if ($product->status==finish)

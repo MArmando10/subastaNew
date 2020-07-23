@@ -24,9 +24,9 @@
         <li class="nav-item">
           <a class="nav-link navigation-font" href=" {{ url('product') }} ">Productos</a>
         </li>
-        {{-- <li class="nav-item">
-          <a class="nav-link navigation-font" href=" {{ url('product.create') }} ">Crear-producto</a>
-        </li> --}}
+        <li class="nav-item">
+          <a class="nav-link navigation-font" href="{{ route('product.create') }}">Agregar-producto</a>
+        </li>
       @endauth
     </ul>
 
