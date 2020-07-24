@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use Session;
-use App\imagen;
+use App\Image;
 use App\Product;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -25,11 +25,11 @@ class ProductController extends Controller
      */
     public function index(Request $request, Product $product)
     {
-        $Product = DB::table('products')->Paginate(4);
-       
-        // $Users = \App\User::all();
-        // dd($Users);
-        return view('products.index',compact('product'));
+        $products = DB::table('products')->Paginate(5);
+        $Product = \App\Product::all();
+        $Users = \App\User::all();
+        // $product = \App\Product::all();
+        return view('products.index',compact('Users','Product','products'));
     }
 
     /**
@@ -39,9 +39,6 @@ class ProductController extends Controller
      */
     public function create(Request $request)
     {
-        // $Product = DB::table('product')->Paginate(4);
-        // $product = Product::all();
-
         // dd($request);
         return view('products.create');
     }
@@ -75,9 +72,11 @@ class ProductController extends Controller
             'images' => 'required',  
             ]);
         //dd($request);
-        $files = $request->file('images'); 
+        $files = $request->file('images');
+
         
         $producto = new Product();
+          
         $producto->titulo  =request()->input('titulo');
         $producto->categoria =request()->input('categoria');
         $producto->condicion =request()->input('condicion');
@@ -96,18 +95,20 @@ class ProductController extends Controller
         $producto->Peso =request()->input('Peso');
         $producto->geografi =request()->input('geografi');
         $producto->user_id = Auth::user()->id;
-            // dd($request);
+
         $producto->save();
 
-        // foreach ($files as $file) {
-        //     $archivo = Storage::putFile('storage', new File($file));
-        //     $imagen = new imagen();
-        //     $imagen->nombre = $file->getClientOriginalName();
-        //     $imagen->url = $archivo;
-        //     $imagen->product_id = $producto->id;
+        foreach ($files as $file) {
+            //dd($file);
+            $archivo = Storage::putFile('storage', new File($file));
+            //dd($file);
+            $imagen = new image();
+            $imagen->nombre = $file->getClientOriginalName();
+            $imagen->url = $archivo;
+            $imagen->product_id = $producto->id;
             
-        //     $imagen->save();
-        // }
+            $imagen->save();
+        }
             return redirect()->route('product.index');
     }
 
@@ -119,7 +120,10 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        // return view('products.show');
+        $now = now();
+        $oferta_maxima = $product->ofertas()->max('oferta');
+
+        return view('products.show',compact('product','now', 'oferta_maxima'));
     }
 
     /**

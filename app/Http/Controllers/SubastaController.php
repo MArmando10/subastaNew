@@ -2,19 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Images;
+use App\Subasta;
+use App\Product;
 use Illuminate\Http\Request;
 
-class ImagesController extends Controller
+class SubastaController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        dd($request);
+        return view('subasta.index');   
     }
 
     /**
@@ -41,21 +43,23 @@ class ImagesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Images  $images
+     * @param  \App\Subasta  $subasta
      * @return \Illuminate\Http\Response
      */
-    public function show(Images $images)
+    public function show(Subasta $subasta, Request $request)
     {
-        //
+        // $products = Product::where('id', '=', $request->input('product_id'))->get();
+        // dd($request);    
+        return view('subasta.index');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Images  $images
+     * @param  \App\Subasta  $subasta
      * @return \Illuminate\Http\Response
      */
-    public function edit(Images $images)
+    public function edit(Subasta $subasta)
     {
         //
     }
@@ -64,10 +68,10 @@ class ImagesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Images  $images
+     * @param  \App\Subasta  $subasta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Images $images)
+    public function update(Request $request, Subasta $subasta)
     {
         //
     }
@@ -75,10 +79,10 @@ class ImagesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Images  $images
+     * @param  \App\Subasta  $subasta
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Images $images)
+    public function destroy(Subasta $subasta)
     {
         //
     }

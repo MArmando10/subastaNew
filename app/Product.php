@@ -11,7 +11,7 @@ class Product extends Model
     }
 
     public function imagenes(){
-    	return $this->hasMany(Imagen::class);
+    	return $this->hasMany(Image::class);
     }
 
     public function user() {
@@ -19,11 +19,6 @@ class Product extends Model
     }
 
     public function ofertas() {
-        return $this->hasMany(Oferta::class);
+        return $this->hasMany(Offers::class);
     }
-
-    public function venta() {
-        return $this->hasOne(Product::class);
-    }
-
 }

@@ -21,9 +21,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/product','ProductController');
+Route::resource('/product','ProductController');//product.- producto
 
 // Route::resource('/offer','OfferController'); //offer.- oferta
 
-// Route::resource('/auction','AuctionController'); //auction.- subasta
+Route::resource('/subasta','SubastaController'); //auction.- subasta
 

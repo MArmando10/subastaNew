@@ -36,4 +36,20 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isAdmin(){
+        if( $this->is_admin == true ){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
+    public function products(){
+        return $this->hasMany(Product::class);
+    }
+
+    public function ofertas(){
+        return $this->hasMany(Oferta::class);
+    }
 }
