@@ -48,9 +48,9 @@ class SubastaController extends Controller
      */
     public function show(Subasta $subasta, Request $request)
     {
-        // $products = Product::where('id', '=', $request->input('product_id'))->get();
+        $products = Product::where('id', '=', $request->input('product_id'))->get();
         // dd($request);    
-        return view('subasta.index');
+        return view('subasta.index',compact('products'));
     }
 
     /**

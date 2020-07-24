@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-dark navigation-bar-style">
   <div class="navbar-brand back-logo">
-    <img class="img-fluid img-height" src="{{ asset('storage/goideal.jpeg')}}" alt="" style="height: 40px">
+    <img class="img-fluid img-height" src="{{ asset('storage/goideal.jpg')}}" alt="" style="height: 47px">
   </div>
 
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
