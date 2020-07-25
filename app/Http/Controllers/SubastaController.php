@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Auth;
+use App\Imagen;
 use App\Subasta;
 use App\Product;
 use Illuminate\Http\Request;
@@ -15,8 +18,9 @@ class SubastaController extends Controller
      */
     public function index(Request $request)
     {
-        dd($request);
-        return view('subasta.index');   
+        $products = Auth::user()->products;
+     
+        return view('subasta.index',compact('products'));   
     }
 
     /**
@@ -47,9 +51,13 @@ class SubastaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Subasta $subasta, Request $request)
-    {
+    {        
         $products = Product::where('id', '=', $request->input('product_id'))->get();
-        // dd($request);    
+        // dd($subasta);
+        if($products->count() == 1) {
+            $product = $products[0];
+            echo "entra";
+        }
         return view('subasta.index',compact('products'));
     }
 
