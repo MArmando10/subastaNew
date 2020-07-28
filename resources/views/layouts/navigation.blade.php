@@ -27,6 +27,9 @@
         <li class="nav-item">
           <a class="nav-link navigation-font" href="{{ route('product.create') }}">Agregar-producto</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link navigation-font" href="{{ route('subasta.index') }}">Mis Subastas</a>
+        </li>
       @endauth
     </ul>
 

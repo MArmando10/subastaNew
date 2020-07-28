@@ -3,8 +3,6 @@
 @section('body-config')
 
 
-ondragstart="return false;" ondrop="return false;" style="width:100%; background: none;"
-@endsection
 
 @section('content')
 
@@ -24,10 +22,10 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
                 </ol> --}}
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="storage/auto.jpg" alt="First slide">
+            <img class="d-block w-100" src="storage/auto.jpeg" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="storage/paisaje_auto.jpg" alt="Second slide">
+            <img class="d-block w-100" src="storage/auto_paisaje.jpeg" alt="Second slide">
           </div>
 
         </div>
@@ -66,10 +64,13 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
                 </ol> --}}
         <div class="carousel-inner">
           <div class="carousel-item active">
-            <img class="d-block w-100" src="storage/paisaje_auto.jpg" alt="First slide">
+            <img class="d-block w-100" src="storage/auto_paisaje.jpeg" alt="First slide">
           </div>
           <div class="carousel-item">
-            <img class="d-block w-100" src="storage/auto.jpg" alt="Second slide">
+            <img class="d-block w-100" src="storage/auto.jpeg" alt="Second slide">
+          </div>
+          <div class="carousel-item">
+            <img class="d-block w-100" src="storage/moto.jpeg" alt="Second slide">
           </div>
 
         </div>

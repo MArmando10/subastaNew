@@ -24,7 +24,6 @@
     }
     }
     </style>
-    
 <div class="row-3" style="margin: 45px; padding: 30px">
 
     {{ Form::open(['route' => ['product.index'], 'method' => 'get'] ) }}
@@ -42,11 +41,11 @@
                     <div class="col-lg-8 opacity-if ">
                      {{-- {{ $products->imagenes->count() }}   --}}
                     
-                     {{-- @if ($products->imagenes->count() > 0)
+                      @if ($products->imagenes->count() > 0)
                         @for ($i = 0; $i < 1; $i++) 
                             <img src="{{asset($products->imagenes[$i]->url)}}" alt="adasd.jpg"width="150">
                         @endfor
-                     @endif --}}
+                     @endif 
 
                     </div>
                 <div class="col  tam">
@@ -73,11 +72,12 @@
 
                 </div>
             <br>
+            <div class="border-lines"></div>
             @endforeach
         </div>
     
     </table>
-    <div class="border-lines"></div>
+    {{-- <div class="border-lines"></div> --}}
   
   
 </div>

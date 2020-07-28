@@ -4,8 +4,8 @@
 
 <style>
   body {
-    background: #555;
-    background-color: transparent;
+    /* background: #555; */
+    /* background-color: transparent; */
   }
 
   .content {

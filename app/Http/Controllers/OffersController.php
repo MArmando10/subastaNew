@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use DB;
+use Auth;
 use App\Images;
+use App\Oferta;
+use App\Product;
+
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class OffersController extends Controller
 {
@@ -14,7 +20,13 @@ class OffersController extends Controller
      */
     public function index()
     {
-        //
+        $ofertas = \App\Oferta::paginate(4);
+        $products = Product::where('id', '=', $request->input('product_id'))->get();  //DB::table('products')->where('id', '=', $request->input('product_id'))->get();
+        $ofertas = $products[0]->ofertas;
+        //dd($);
+        //dd($product[0]->ofertas);
+        //$ofertas = $product[0]->ofertas;
+        return view('ofertas.index',compact('ofertas'));
     }
 
     /**
@@ -35,7 +47,17 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'oferta' => 'required',
+        ]);
+            $oferta = new Oferta();
+            $oferta->user_id = \Auth::user()->id;
+            //$oferta->product_id = \Auth::user();
+            $oferta->product_id =request()->input('product_id');
+            $oferta->oferta = request()->input('oferta');
+            // $oferta = Input::get('oferta', 'default oferta');
+            $oferta -> save();
+        return redirect()->route('product.index');
     }
 
     /**
