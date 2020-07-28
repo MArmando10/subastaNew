@@ -6,27 +6,31 @@
   body {
     /* background: #555; */
     /* background-color: transparent; */
+    font-size: 1.2rem;
+    background-color: white;
   }
 
   .content {
-    max-width: 500px;
+    max-width: 900px;
     margin: auto;
     /* background: white; */
-    padding: 10px;
+    padding: 25px;
   }
+ 
+ 
 </style>
 
 <div class="card content">
-  <div class="card-header">
-    <h2>Subasta un producto</h2>
+  <div class="card-header text-center">
+    <h2 style="font-size: 3rem;">Subasta un producto</h2>
   </div>
   <div class="card-body">
 
       {!! Form::open(['action' => 'ProductController@store', 'method' => 'post', 'files' => true], ['class' => 'inline-form']) !!}
-      <div><h5>Detalles del producto</h5></div>
+     
         {{$errors}}
-      <div class="form-group col-md-12">
-        <h3 class="font-weight-bold">Detalles de producto</h3>
+      <div class="form-group col-12">
+        <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de producto</h3>
         
         <!-- Titulo -->
         <div class="form-group row">
@@ -82,7 +86,7 @@
         --------------------------------------------------------------------------------------------------------------
         <br><br>
         <!--Duración-->
-        <h3 class="font-weight-bold">Detalles de la venta</h3>
+        <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de la venta</h3>
         <div class="form-group row">
           {{ Form::label('Duración', null, ['class' => 'col-sm-2 col-form-label']) }}
           <div class="col-sm-10">
@@ -149,7 +153,7 @@
             </div>
       </div> --}}
   <!-- Detalles de envio -->
-  <h3 class="font-weight-bold">Detalles de envío</h3>
+  <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de envío</h3>
   
   <!-- Destino -->
   <div class="form-group row">
@@ -205,13 +209,9 @@
     <div class="d-flex justify-content-between mb-8">
       <a class="btn btn-primary" role="button" href="{{route('product.index')}}"><i class="fas fa-arrow-left"></i> Regresar</a>
         {{Form::submit('Guardar y continuar', ['class' => 'btn btn-primary fas fa-save'])}}
+    
+    {!! Form::close() !!}
     </div>
   </div>
-</div>
-<br>
-
-{!! Form::close() !!}
-
-
 
 @endsection

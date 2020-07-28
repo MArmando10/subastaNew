@@ -8,6 +8,7 @@
         /* background-color: transparent; */
         /* margin:10px; */
         /* -webkit-text-emphasis-style: dot; */
+        font-size: 1.05rem;
     }
 
     .border-lines {

@@ -3,56 +3,57 @@
 @section('content')
 <style>
 
-    body {
+    header {
         /* background-color: transparent; */
-        /* margin:10px; */
+        margin:10px;
         /* -webkit-text-emphasis-style: dot; */
     }
 
     .border-lines {
         background-color: darkgrey;
         height: 10px;
+        width: 75%;
     }
-
-    /* .letra {
-        color: white;
-    } */
-    .margen{
-        margin-left: 2rem;
+    .ofertar-style {
+        border-radius: 10px;
+        padding-top: 5px;
+        width: 50%;
+        min-width: 250px;
     }
-    
-   
+    body{
+        font-size: 10px;
+    }
 </style>
- <div class="border-lines"></div>
-    <section>
-        <div class="row letra">
-            <div class="col-lg-2 col-7 text-center" style="transform: translateY(20%);">
+@php
+$index=0;
+@endphp
+<section style="margin-left: 10%">
+        <div class="border-lines"></div>
+    <div class="row">
+        <div class="row" style="padding: 5px; margin: 10px">
+            <div class="col-lg-1 col-7 text-center"  style="flex-flow: wrap; z-index: 100">
                 @if ($product->imagenes->count() >= 0)
                 @for ($i = 1; $i < 1; $i++)
                  <img class="col-lg-4 col-12" src="{{asset($product->imagenes[$i]->url)}}" alt="adasd.jpg" 
-                 width="30" class="mx-auto margen d-block img-fluid" style="height: auto; width:120px; transform:translateX(20%); border: 2px solid DodgerBlue; ">
+                 width="30" class="mx-auto margen d-block img-fluid" style="height: auto; width:120px; transform:translateX(20%); border: 2px solid DodgerBlue;">
               
                  @endfor
             @foreach ($product->imagenes as $imagen)
             {{-- {{dd($product->imagenes)}} --}}
-            <img src="{{asset ($imagen->url)}}" alt="adasd.jpg" width="70"
-                style="height: auto; transform: translateX(-20%)">
-            @endforeach
-            @endif
-        </div>
-        
-        
-        <div class="col-3 text-center letra" style="transform: translateY(20%);">
-            @foreach($product->imagenes as $imagen)
-
-            <div class="item">
-                <img src="{{asset($imagen->url)}}" alt="slider-image" class="img-responsive" style="height: 270px">
+            <div style="margin: 2px; border-color: blue; border-left-style: solid;">
+                <img src="{{asset($imagen->url)}}" alt="adasd.jpg" style="height: auto; width: 100px;" onclick="imageSelected(@php echo $index; @endphp, '{{asset($imagen->url)}}')">
             </div>
-
+            @php
+                $index++;
+            @endphp
             @endforeach
         </div>
+        <div class="col-lg-5 col-7 text-center" >
+            <img id="myImg" src="{{asset($product->imagenes[0]->url)}}" alt="adasd.jpg" style="height: auto; width: 80%;">
+        </div>
+        @endif
        
-        <div class="col-4  letra text-center">
+        <div class="col-lg-2 text-center">
             <br>
             {{-- <h2 id="reloj"></h2> --}}
             <h2> Fecha de expiración:</h2>
@@ -70,11 +71,11 @@
                 @endforeach --}}
                 <p><span style="color: blue">350 GOI</span>  Mejor oferta al momento</p>
                     
-                <div class="col-5 letra text-center">
+                <div class="col-lg-12 text-center">
                     <div class="bg-secondary text-center bg-secondary-mine">
                         <div class="row" style="margin-left: inherit">
                             <br>
-                            <div class="col-lg-8">
+                            <div class="col-lg-11">
                                 <br>
                                 <h4 class=" text-center">Oferta Actual</h4>
                                 <table width=300 cellspacing=0 cellpadding=0 bgcolor="#333399" border=0>
@@ -98,16 +99,16 @@
                 </div>
             </div>
         </div>
-        </div>
+    </div>
 
 </section>
 
 
-
-<section>
-   
-    <div class="row-7 intro">
-        <div class="col-6 col-sm-3 letra text-center mx-auto d-block">
+<section style="margin-left: 10%">
+    <div class="border-lines"></div>
+    <div class="row-8 intro">
+        <div class="col-lg-5 col-sm-3 text-center mx-auto d-block">
+            <br>
             <div class="border-lines"></div>
             <br>
             <h2>Caracteristicas</h2>
@@ -128,33 +129,34 @@
                         <tr>
                             <th>Descripción</th>
                             <th>Precio Reserva</th>
-                            <th>Fecha Inicio</th>
+                            <th>Fecha/Hora de Inicio</th>
                         </tr>
                     </thead>
-                    <tbody class="thead-dark letra">
+                    <tbody class="thead-dark">
                         <tr>
                             <td scope="col">{{$product->descripcion}}</td>
                             <td scope="col">{{$product->precioReserva}}</td>
                             <td scope="col">{{$product->fechaInicio}}</td>
             </div>
-            </tbody>
+                    </tbody>
 
             <br>
             <div class="row-3">
-                <div class="col-sm-3"><br>
-                    <h2 class="elemento strong">Ultimas Ofertas</h2>
-                </div>
-                {{-- <div class="col float-right">
+               
+                <div class="col float-right">
                     <br>
-                    {{ Form::open(['route' => ['venta.index', $product], 'method' => 'get'] ) }}
+                    {{ Form::open(['route' => ['product.index', $product], 'method' => 'get'] ) }}
                     {{Form::submit('Ver todas las ofertas', ['class' => 'btn btn-primary mb-5'])}}
                     {{Form::close()}}
-                </div> --}}
+                </div>
+                <div class="col-sm-6"><br>
+                    <h2 class="elemento strong">Ultimas Ofertas</h2>
+                </div>
             </div>
         </div>
 
     </div>
-
+    
     </div>
 </section>
 
@@ -180,6 +182,14 @@
     }
     setTime();
     console.log("entra");
+</script>
+<script>
+function imageSelected(index, url){
+    var img = document.getElementById("myImg");
+    img.src = url;
+    console.log(index);
+    console.log(url);
+}
 </script>
 
 @endsection
