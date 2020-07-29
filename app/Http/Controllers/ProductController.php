@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use Auth;
+use Offers;
 use Session;
 use App\Image;
 use App\Product;
@@ -121,9 +122,10 @@ class ProductController extends Controller
     public function show(Product $product)
     {
         $now = now();
+        $ofer = \App\Offers::all();
         $oferta_maxima = $product->ofertas()->max('oferta');
 
-        return view('products.show',compact('product','now', 'oferta_maxima'));
+        return view('products.show',compact('product','now', 'oferta_maxima','ofer'));
     }
 
     /**

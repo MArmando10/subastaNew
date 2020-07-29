@@ -9,15 +9,17 @@
     font-size: 1.2rem;
     background-color: white;
   }
-
   .content {
     max-width: 900px;
     margin: auto;
     /* background: white; */
     padding: 25px;
   }
- 
- 
+  .border-lines {
+        background-color: darkgrey;
+        height: 4px;
+        width: 100%;
+    } 
 </style>
 
 <div class="card content">
@@ -83,8 +85,9 @@
             {{ Form::textarea('descripcion', null, ['id' => 'keterangan', 'rows' => 4, 'class' => 'form-control']) }}
           </div>
         </div>
-        --------------------------------------------------------------------------------------------------------------
-        <br><br>
+        <br>
+        <div class="border-lines"></div>
+       <br><br>
         <!--Duración-->
         <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de la venta</h3>
         <div class="form-group row">
@@ -141,8 +144,8 @@
             {{ Form::number('cantidad', '', ['class' => 'form-control']) }}
           </div>
         </div>
-
-        --------------------------------------------------------------------------------------------------------------
+        <br>
+        <div class="border-lines"></div>
         <br><br>
         {{-- <h3 class="font-weight-bold">Opciones de devolución</h3>
         <!-- Devolucion -->
@@ -213,5 +216,6 @@
     {!! Form::close() !!}
     </div>
   </div>
+  <br>
 
 @endsection

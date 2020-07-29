@@ -23,7 +23,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/product','ProductController');//product.- producto
 
-// Route::resource('/offer','OfferController'); //offer.- oferta
+Route::resource('/offer','OffersController'); //offer.- oferta
 
 Route::resource('/subasta','SubastaController'); //auction.- subasta
 

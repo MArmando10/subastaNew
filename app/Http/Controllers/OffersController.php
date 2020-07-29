@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use DB;
 use Auth;
 use App\Images;
-use App\Oferta;
+use App\Offers;
 use App\Product;
 
 use Illuminate\Http\Request;
@@ -50,7 +50,7 @@ class OffersController extends Controller
         $request->validate([
             'oferta' => 'required',
         ]);
-            $oferta = new Oferta();
+            $oferta = new Offers();
             $oferta->user_id = \Auth::user()->id;
             //$oferta->product_id = \Auth::user();
             $oferta->product_id =request()->input('product_id');

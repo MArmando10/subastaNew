@@ -6,7 +6,6 @@
 
     body {
         /* background-color: transparent; */
-        /* margin:10px; */
         /* -webkit-text-emphasis-style: dot; */
         font-size: 1.05rem;
     }
@@ -15,26 +14,17 @@
         background-color: darkgrey;
         height: 10px;
     }
-
-    /* .letra {
-        color: white;
-    } */
    
 </style>
 
 <div class="row-3" style="margin: 65px; padding: 30px">
-    <div class="col-lg-6">
+    <div class="col-lg-6" style="min-width: 100%;">
               <div class="d-flex justify-content-center">
                 <div class="searchbar">
-                  <input class="search_input" type="text" name="" placeholder="Search...">
+                  <input class="search_input" type="text" name="categoria" placeholder="Buscar por Categoria">
                   <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
                 </div>
               </div>
-       
-
-
-
-
         {{-- <form action="search" method="POST" role="searchBuscar">
             {{ csrf_field() }}
             <div class="d-flex " style="text-align: center">
@@ -50,6 +40,9 @@
 
             </div>
         </form> --}}
+
+        
+
         <br><br>
         <div class="border-lines"></div>
        
@@ -74,7 +67,7 @@
                         <p class="card-text">Envio gratis</p>
                     </div>
                     <div class="row">
-                        <div class="col letra tam">
+                        <div class="col tam">
                             <p class="card-text">Finalizacion de la subasta: {{$product->fechaFinal}}</p>
                             <p class="card-text">De: Guadalajara. Jal.</p>
                             <p class="card-text">México</p>
@@ -94,7 +87,8 @@
 
                             {{ Form::close() }}
                             {{-- @endforeach --}}
-
+                            
+                         
                     </div>
                 </div>
                     

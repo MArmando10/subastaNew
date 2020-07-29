@@ -81,7 +81,7 @@ $index=0;
                                 <table width=300 cellspacing=0 cellpadding=0 bgcolor="#333399" border=0>
                             </div>
                             
-                            {{ Form::open(['route' => ['subasta.store', $product], 'method' => 'post'] ) }}
+                            {{ Form::open(['route' => ['offer.store', $product], 'method' => 'post'] ) }}
 
                             <div class="col text-center bg-secondary text-justify">
                                 <input type="hidden" name="product_id" value="{{$product->id }}">
@@ -92,8 +92,22 @@ $index=0;
                                 {{Form::submit('Ofertar', ['class' => 'btn btn-primary mb-5'])}}
 
                             </div>
-                        </table>
                             {{Form::close()}}
+                        </table>
+                           
+
+
+
+                            {{-- <div class="col float-right align-self-end">
+                                {{ Form::open(['route' => ['product.show', $product], 'method' => 'get'] ) }}
+                                <input type="hidden" name="product_id" value="{{$product->id }}">
+                                <input name="oferta" class="form-control text-center" type="text" min="1"
+                                    placeholder="Ofertar" pattern="[+]?([0-9]*[.])?[0-9]+" id="oferta">
+                                <p type="text" style="">Ofrecer $ o más</p>
+                                {{Form::submit('Más Detalles', ['class' => 'btn btn-primary  mb-5'])}}
+    
+                                {{ Form::close() }}
+                            </div> --}}
                         </div>
                     </div>
                 </div>
