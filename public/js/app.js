@@ -1,7 +1,7 @@
 /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-/******/  import 'owl.carousel';
+/******/  
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
@@ -17236,9 +17236,6 @@ jQuery.noConflict = function( deep ) {
 if ( typeof noGlobal === "undefined" ) {
 	window.jQuery = window.$ = jQuery;
 }
-
-
-
 
 return jQuery;
 } );
@@ -49898,8 +49895,9 @@ module.exports = __webpack_require__(/*! C:\Users\Administrador\Documents\Larave
 
 /***Carousel con Owl */
 
-  jQuery(document).ready(function() {
-    jQuery('.owl-carousel').owlCarousel({
 
-  });
-});
+//   jQuery(document).ready(function() {
+//     jQuery('.owl-carousel').owlCarousel({
+
+//   });
+// });

@@ -18,4 +18,9 @@ class Authenticate extends Middleware
             return route('login');
         }
     }
+
+    // protected function autentificate($request){
+    //     if ($user !! $user->next)
+    // }
+   
 }

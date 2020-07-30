@@ -3,10 +3,7 @@
 @section('content')
 
 <style>
-
     body {
-        /* background-color: transparent; */
-        /* -webkit-text-emphasis-style: dot; */
         font-size: 1.05rem;
     }
 
@@ -14,20 +11,33 @@
         background-color: darkgrey;
         height: 10px;
     }
-    div.third {
+    /* # {
   opacity: 0.6;
-}
+} */
+
    
 </style>
 
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%">
-              <div class="d-flex justify-content-center">
-                <div class="searchbar">
+        {{-- <div class="hero-productos">
+            <div class="container h-100" action={{ route('buscar.show') }}>
+                <div class="row h-100 align-items-center">
+                    <div class="col md-4 texto-buscar">
+                        <p class="display-4">Buscar productos</p>
+
+                        <input type="search" name="buscar" class="form-control" placeholder="Buscar por categoria" />
+                    </div>
+                </div>
+            </div>
+        </div>   --}}
+
+         <div class="d-flex justify-content-center">
+                <div class="searchbar h-100" action={{ route('buscar.show')}}>
                   <input class="search_input" type="text" name="categoria" placeholder="Buscar por Categoria">
                   <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
                 </div>
-              </div>
+              </div> 
               
 
         <br><br>
@@ -38,6 +48,7 @@
                 @foreach ($Users as $user)
                 @foreach ( $user->products as $product)
                 <br>
+                <div class="col termino">
                 <div class="row intro">
                     <div class="col-lg-6 col-12 text-center">
                         {{-- {{ $products->imagenes->count() }} --}}
@@ -60,23 +71,23 @@
                             <p class="card-text">México</p>
                             <p class="card-text">Envió Nacional</p>
                         </div>
-                        <div class="col float-right align-self-end">
-                            {{-- @foreach ($products as $product)
-                                    @if ($product->status==finish)
-                                        @yield(layoutss::view:make('layoutss.ganadora')); 
-
-                                    @else ($product->status==pendiente)
-                                        @yield(layoutss::view:make('products.show'));
-                                    @endif --}}
-                                
-                            {{ Form::open(['route' => ['subasta.show', $product], 'method' => 'get'] ) }}
-                            {{Form::submit('vista ganadora', ['class' => 'btn btn-primary mb-5'])}}{{--debe de ser mas detalles, haciendo prueba para vista ganadora--}}
-
-                            {{ Form::close() }}
-                            {{-- @endforeach --}}
-                            
-                         
                     </div>
+                        <div class="col float-right align-self-end">
+                            @if ($product->status==1)
+
+                            {{ Form::open(['route' => ['product.show', $product], 'method' => 'get'] ) }}
+                            {{Form::submit('Más detalles', ['class' => 'btn btn-primary mb-5'])}}{{--debe de ser mas detalles, haciendo prueba para vista ganadora--}}
+    
+                            {{ Form::close() }}
+    
+                            @else
+                            {{ Form::open(['route' => ['subasta.show', $product], 'method' => 'get'] ) }}
+                            {{Form::submit('Finalizado', ['class' => 'btn btn-primary mb-5'])}}{{--debe de ser mas detalles, haciendo prueba para vista ganadora--}}
+    
+                            {{ Form::close() }}
+    
+                            @endif
+                        </div>
                 </div>
                     
                 </div>

@@ -18,11 +18,18 @@ class SubastaController extends Controller
      */
     public function index(Request $request)
     {
+        // if (auth()->check() && auth()->user()->admin){
+        $products = product::orderBy('id', 'DESC')->paginate(5);
         $products = Auth::user()->products;
         $Users = \App\User::all();
      
         return view('subasta.index',compact('products','Users'));   
     }
+    // else{
+
+    //     return view('home3');
+    // }
+
 
     /**
      * Show the form for creating a new resource.
@@ -97,5 +104,12 @@ class SubastaController extends Controller
     public function destroy(Subasta $subasta)
     {
         //
+    }
+
+
+    public function search(Request $request){
+        $product = product::where('categoria','like','%' .$busqueda. '%' )->paginate(4);
+
+        return view('subasta.index',compact('product'));
     }
 }

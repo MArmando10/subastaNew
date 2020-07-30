@@ -27,3 +27,4 @@ Route::resource('/offer','OffersController'); //offer.- oferta
 
 Route::resource('/subasta','SubastaController'); //auction.- subasta
 
+Route::get('/buscar','SubastaController@search')->name('buscar.show'); //buscar productos
