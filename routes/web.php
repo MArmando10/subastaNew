@@ -19,12 +19,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::resource('/product','ProductController');//product.- producto
+Route::resource('/product','ProductController')->middleware('auth');//product.- producto
 
-Route::resource('/offer','OffersController'); //offer.- oferta
+Route::resource('/offer','OffersController')->middleware('auth'); //offer.- oferta
 
-Route::resource('/subasta','SubastaController'); //auction.- subasta
+Route::resource('/subasta','SubastaController')->middleware('auth'); //auction.- subasta
 
-Route::get('/buscar','SubastaController@search')->name('buscar.show'); //buscar productos
+Route::get('/buscar','SubastaController@search')->name('buscar.show')->middleware('auth'); //buscar productos

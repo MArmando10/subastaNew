@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    protected $fillable = ['id','nombre','product_id'];
+
     public function articles()
     {
         return $this->hasMany('App\Product');
@@ -16,6 +18,6 @@ class Image extends Model
     }
 
     public function subasta(){
-        return $this->hasMany(Subasta::class);
+        return $this->hasMany('App\Image');
     }
 }

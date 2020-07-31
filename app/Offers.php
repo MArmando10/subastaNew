@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Offers extends Model
 {
+    protected $fillable = ['id','user_id','product_id','oferta'];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
@@ -18,5 +20,7 @@ class Offers extends Model
         return $this->hasOne(Subasta::class);
     }
 
+
+  
 }
 

@@ -26,27 +26,16 @@ class ProductController extends Controller
      */
     public function index(Request $request, Product $product)
     {
-        if ($request->user())
-        {
+        
             // dd("entro");
-            $products = product::paginate(5);
-            // dd($products);
-            // $products = DB::table('products')->Paginate(5);
+            $products = Product::orderBy('id','DESC')->paginate(6);
             $Product = \App\Product::all();
+            $offer = \App\Offers::all();
             $Users = \App\User::all();
-            // $product = \App\Product::all();
-            return view('products.index',compact('Users','Product','products'));
+        
+            return view('products.index',compact('Users','Product','products','offer'));
         }   
-         else {
-            // dd('entra otra');  
-            $products = DB::table('products')->Paginate(5);
-            $Users = \App\User::all(); 
-            return view('products.index',compact('Users','products')); 
-            // return view('home3');
-         }
-       
-
-    }
+    
 
     /**
      * Show the form for creating a new resource.

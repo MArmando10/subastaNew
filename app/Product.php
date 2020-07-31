@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $fillable = ['id','titulo','categoria','condiccion','marca','descripcion','duracion','fechaInicio','fechaFinal','precioFinal','precioReserva','cantidad','Destino','Alto','Ancho','Largo','Peso','geografi'];
+
+
     public function category(){
         return $this->hasMany(Category::class);
     }
@@ -21,4 +24,5 @@ class Product extends Model
     public function ofertas() {
         return $this->hasMany(Offers::class);
     }
+
 }

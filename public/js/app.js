@@ -49901,3 +49901,6 @@ module.exports = __webpack_require__(/*! C:\Users\Administrador\Documents\Larave
 
 //   });
 // });
+
+
+Vue.component('pagination', require('laravel-vue-pagination'));

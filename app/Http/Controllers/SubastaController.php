@@ -9,6 +9,9 @@ use App\Subasta;
 use App\Product;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\File;
+
 class SubastaController extends Controller
 {
     /**
@@ -62,13 +65,14 @@ class SubastaController extends Controller
     {        
         
         $product = Auth::user()->products;
-        // dd($product);
-        // $products = Product::where('id', '=', $request->input('product_id'))->get();
-        // dd($subasta);
-        if($product->count() == 1) {
-            $product = $products[0];
+        // dd($products);
+        // dd($product[0]->imagenes);
+        if($product->count() == 0) {
             echo "entra";
         }
+       
+        // dd($imagenes);
+        
         return view('subasta.show',compact('product'));
     }
 
