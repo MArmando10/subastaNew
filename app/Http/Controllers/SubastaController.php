@@ -22,11 +22,11 @@ class SubastaController extends Controller
     public function index(Request $request)
     {
         // if (auth()->check() && auth()->user()->admin){
-        $products = product::orderBy('id', 'DESC')->paginate(5);
-        $products = Auth::user()->products;
+        $products = product::orderBy('id', 'asc')->paginate(5);
+        // $products = Auth::user()->products;
         $Users = \App\User::all();
-     
-        return view('subasta.index',compact('products','Users'));   
+
+        return view('subasta.index',compact('products','Users'));
     }
     // else{
 
@@ -62,17 +62,17 @@ class SubastaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Subasta $subasta, Request $request)
-    {        
-        
+    {
+
         $product = Auth::user()->products;
         // dd($products);
         // dd($product[0]->imagenes);
         if($product->count() == 0) {
             echo "entra";
         }
-       
+
         // dd($imagenes);
-        
+
         return view('subasta.show',compact('product'));
     }
 

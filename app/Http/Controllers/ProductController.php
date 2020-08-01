@@ -26,16 +26,16 @@ class ProductController extends Controller
      */
     public function index(Request $request, Product $product)
     {
-        
+
             // dd("entro");
-            $products = Product::orderBy('id','DESC')->paginate(6);
+            $products = Product::orderBy('id','asc')->paginate(5);
             $Product = \App\Product::all();
             $offer = \App\Offers::all();
             $Users = \App\User::all();
-        
+
             return view('products.index',compact('Users','Product','products','offer'));
-        }   
-    
+        }
+
 
     /**
      * Show the form for creating a new resource.
@@ -58,7 +58,7 @@ class ProductController extends Controller
     {
         if ($request->user())
         {
-        $request->validate([ 
+        $request->validate([
             'titulo' => 'required',
             'categoria'=>'required',
             'condicion'=>'required',
@@ -76,14 +76,14 @@ class ProductController extends Controller
             'Largo'=>'required',
             'Peso'=>'required',
             'geografi' => 'required',
-            'images' => 'required',  
+            'images' => 'required',
             ]);
         //dd($request);
         $files = $request->file('images');
 
-        
+
         $producto = new Product();
-          
+
         $producto->titulo  =request()->input('titulo');
         $producto->categoria =request()->input('categoria');
         $producto->condicion =request()->input('condicion');
@@ -113,14 +113,14 @@ class ProductController extends Controller
             $imagen->nombre = $file->getClientOriginalName();
             $imagen->url = $archivo;
             $imagen->product_id = $producto->id;
-            
+
             $imagen->save();
         }
             return redirect()->route('product.index');
     }
     else {
-        // dd('entra otra');  
-        return view('home3'); 
+        // dd('entra otra');
+        return view('home3');
         // return view('home3');
      }
     }
@@ -178,10 +178,10 @@ class ProductController extends Controller
 
     function searchBuscar(Request $request) {
 
-        Session::forget('message');    
+        Session::forget('message');
         $anterior = $request->all();
         if($request->categoria != "" )
-        {    
+        {
            $producto = producto::when($request->categoria,function($query,$request){return $query->where('categoria','like', $request .'%');})
            ->orderBy('categoria', 'ASC')
            ->paginate(10)
@@ -198,12 +198,12 @@ class ProductController extends Controller
 
              if ($count  > 0){
                  Session::flash('message','Se encontraron '.$count.' registros en la busqueda.');
-      
+
                 return view('products.index',compact('productos','anterior'));
              }
              else{
                  Session::flash('message','No se encontraron registros en la busqueda.');
-      
+
                          return view('products.index',compact('anterior'));
              }
           return redirect()->route('products.productsView');
