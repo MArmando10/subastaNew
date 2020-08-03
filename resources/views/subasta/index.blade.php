@@ -15,34 +15,23 @@
   opacity: 0.6;
 } */
 
-   
+
 </style>
 <br>
 <div class="row col-lg-6 justify-content-center"><h1><strong>Estas en Subastas</strong></h1></div>
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%">
-        {{-- <div class="hero-productos">
-            <div class="container h-100" action={{ route('buscar.show') }}>
-                <div class="row h-100 align-items-center">
-                    <div class="col md-4 texto-buscar">
-                        <p class="display-4">Buscar productos</p>
 
-                        <input type="search" name="buscar" class="form-control" placeholder="Buscar por categoria" />
-                    </div>
-                </div>
-            </div>
-        </div>   --}}
-        <div class="d-flex justify-content-center">
-            <div class="searchbar h-100" action={{ route('buscar.show')}}>
-                <input class="search_input" type="text" name="categoria" placeholder="Buscar por Categoria">
-                <a href="#" class="search_icon"><i class="fas fa-search"></i></a>
-            </div>
-        </div> 
-              
+        <form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+            <button class="btn btn-dark form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;">Buscar</button>
+        </form>
+
 
         <br><br>
         <div class="border-lines"></div>
-       
+
             <table id="example" class="table table-striped table-bordered" style="width:100%">
 
                 @foreach ($Users as $user)
@@ -63,7 +52,7 @@
                                     <p class="card-text">(81 ofertas de subasta)</p>
                                     <p class="card-text">Envio gratis</p>
                                 </div>
-                            
+
                                 <div class="row">
                                     <div class="col tam">
                                         <p class="card-text">Finalizacion de la subasta: {{$product->fechaFinal}}</p>
@@ -77,17 +66,17 @@
                                         {{ Form::open(['route' => ['product.show', $product], 'method' => 'get'] ) }}
                                         {{ Form::submit('Más detalles', ['class' => 'btn btn-primary mb-5'])}}{{--debe de ser mas detalles, haciendo prueba para vista ganadora--}}
                                         {{ Form::close() }}
-            
+
                                     @else
                                         {{ Form::open(['route' => ['product.show', $product], 'method' => 'get'] ) }}
                                         {{ Form::submit('Finalizado', ['class' => 'btn btn-primary mb-5'])}}{{--debe de ser mas detalles, haciendo prueba para vista ganadora--}}
-                
+
                                         {{ Form::close() }}
-            
+
                                     @endif
                                 </div>
                             </div>
-                    
+
                         </div>
                         <br>
                         <div class="border-lines"></div>
