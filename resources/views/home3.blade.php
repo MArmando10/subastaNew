@@ -19,7 +19,7 @@
     <br>
 
     <div class="row" >
-        <div class="col-lg-12 col-6 bg-secondary" style="color: dimgrey; width: 20%; height: auto;">
+        <div class="col-lg-12 col-6 bg-secondary" style="color: dimgrey; width: 20%; height: auto; margin: auto">
           <h2 style="color: black">Mejores Precios</h2>
           <br>
             <div class="col-lg-3 bg-ter ">
@@ -33,35 +33,38 @@
             </div>
         </div>
     </div>
-    <br><br><br>
 
-    <div class="row-2" style=" padding: $spacer !important; margin: 50px; justify-content: center">
-        <div class="col-md-6 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
+
+    <div class="row-2" style=" padding: $spacer !important; margin: 50px; justify-content: center;">
+        <div class="col-md-6 bg-secondary" style="color: dimgrey; width: 30%; height: auto; margin: auto; flex-flow: column wrap;">
             <h2 style="color: black;">Explora lo mejor en hogar y cocina</h2>
             <br>
-            <div class="col-lg-12">
-                <img class="d-block  offset-md-1  bord" src="storage/sillas.jpg" alt="First slide" style="width: 50%; height: auto;" >
+            <div class="col-md-12 ">
+                <img class="d-block  offset-md-1  bord" src="storage/sillas.jpg" alt="First slide" style="width: 60%; height: auto;  flex-flow: column wrap;" >
                 <br>
             </div>
             <div class="col-12">
-                <img class="d-block bg-ter offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 50%; height: auto;" >
+                <img class="d-block bg-ter offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 60%; height: auto;  flex-flow: column wrap;" >
             </div>
         </div>
-        <div class="col-md-6 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
+        <br>
+
+        <div class="col-md-7 bg-secondary" style="color: dimgrey; width: 30%; height: auto;  flex-flow: column wrap; margin: 50px; ">
+
             <h2 style="color: black;">Lo mejor en deportes</h2>
             <br>
-            <div class="col-lg-8 ">
-                <img class="d-block   bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%; height: auto;" >
+            <div class="col-md-8 ">
+                <img class="d-block   bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%; height: auto;  flex-flow: column wrap;" >
             </div>
             <div class="col-lg-4  ">
-                <div class="col-12 bg-ter ">
-                    <img class=" bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 90px; height: 50px;" >
+                <div class="col-md-12 bg-ter ">
+                    <img class=" bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 60px; height: auto;  flex-flow: column wrap;" >
                     <br>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-md-4">
                 <br>
-                <img class="d-block bg-ter   bord" src="storage/gorra_deportiva.jpg" alt="First slide" style="width: 50%; height: auto;" >
+                <img class="d-block bg-ter   bord" src="storage/gorra_deportiva.jpg" alt="First slide" style="width: 90%; height: auto;  flex-flow: column wrap;" >
             </div>
         </div>
     </div>
