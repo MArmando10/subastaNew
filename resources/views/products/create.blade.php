@@ -58,7 +58,7 @@
         <div class="form-group row">
           {{ Form::label('Categoria', null, ['class' => 'col-sm-2 col-form-label']) }}
           <div class="col-sm-10">
-            {{ Form::select('categoria', ['1' => 'Tecnología', '2' => 'Hogar', '3' => 'Autos/Motos', '4' => 'Paisajes', '5' => 'Otros' ], 'categoria', ['class' => 'form-control']) }}
+            {{ Form::select('categoria', ['1' => 'Tecnología', '2' => 'Hogar', '3' => 'Deportes', '4' => 'Ropa', '5' => 'Juguetes', '6' => 'Otros' ], 'categoria', ['class' => 'form-control']) }}
           </div>
         </div>
 

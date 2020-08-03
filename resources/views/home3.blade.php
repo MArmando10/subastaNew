@@ -4,38 +4,20 @@
 
 @section('content')
 
-<style>
-    .bg-secondary {
-  border-radius: 10px;
-  margin: 20px;
-  padding: 7%;
-}
-    .bg-ter{
-    border-radius: 10px;
-    padding: 9%;
-    background-color: white;
-    }
-    .bord{
-        border-radius: 25px;
-    }
-</style>
-
-
-
 {{-- <a class="btn btn-secondary mb-5" href="{{ route('product.create') }}">Agregar producto</a> --}}
-<div class="background" style="position: relative">
+{{-- <div class="background" style="position: relative">
   <div class="container">
     <div class="row-2 justify-content-center tam">
       {{--
             2   I want to make a button that links to route: normindex
-            This blow does not seem to work. --}}
+            This blow does not seem to work.
 
       <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-        {{-- <ol class="carousel-indicators">
+       <ol class="carousel-indicators">
                   <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
                   <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-                </ol> --}}
+                </ol>
         <div class="carousel-inner">
           <div class="carousel-item active">
             <img class="d-block w-100" src="storage/auto.jpeg" alt="First slide">
@@ -56,49 +38,46 @@
 
       </div>
       <!-- Custom Controls -->
-      {{-- <a href="javascript:void(0);" id="prevBtn">Prev Slide</a>
-            <a href="javascript:void(0);" id="nextBtn">Next Slide</a> --}}
+     <a href="javascript:void(0);" id="prevBtn">Prev Slide</a>
+            <a href="javascript:void(0);" id="nextBtn">Next Slide</a>
 
     </div>
   </div>
 
-</div>
+</div> --}}
 
-    <div class="row" style=" margin: auto; padding: 7%;  background-image: white; justify-content: center">
-        <div class="col-lg-8 bg-secondary" style="color: dimgrey; margin: 10px; width: 70%; height: auto;">
-            <div class="col-lg-3 bg-ter ">
-                {{-- <div class="col-lg-3 rounded float-left "> --}}
+<form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
+    <i class="fas fa-search" aria-hidden="true"></i>
+    <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+    <button class="btn btn-dark form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;">Buscar</button>
+  </form>
+
+    <div class="row" >
+        <div class="col-lg-12 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
+          <h2 >Mejores Precios</h2>  
+          <div class="col-lg-3 bg-ter ">
                     <img class="d-block w-100  bord" src="storage/moto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-                {{-- </div> --}}
             </div>
             <div class="col-lg-3 bg-ter offset-md-1">
-
                     <img class="d-block w-100  bord" src="storage/auto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-
             </div>
             <div class="col-lg-3 bg-ter offset-md-1">
-
                     <img class="d-block w-100  bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-
             </div>
         </div>
     </div>
-    <div class="row" style="  background-color: white; justify-content: center">
-        <div class="col-lg-8 bg-secondary" style="color: dimgrey; margin: 10px; width: 70%; height: auto;">
+    <br><br><br>
+
+    <div class="row" >
+        <div class="col-lg-12 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
             <div class="col-lg-3 bg-ter ">
-                {{-- <div class="col-lg-3 rounded float-left "> --}}
                     <img class="d-block w-100  bord" src="storage/moto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-                {{-- </div> --}}
             </div>
             <div class="col-lg-3 bg-ter offset-md-1">
-
                     <img class="d-block w-100  bord" src="storage/auto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-
             </div>
             <div class="col-lg-3 bg-ter offset-md-1">
-
                     <img class="d-block w-100  bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-
             </div>
         </div>
     </div>

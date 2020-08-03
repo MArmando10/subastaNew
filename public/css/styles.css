@@ -166,7 +166,7 @@ body,html{
     background: white !important;
     }
 
-    .searchbar{
+    /* .searchbar{
     margin-bottom: auto;
     margin-top: auto;
     height: 60px;
@@ -194,21 +194,52 @@ body,html{
     }
 
     .searchbar:hover > .search_icon{
-    background: white;
-    color: #e74c3c;
-    }
+        background: white;
+        color: #e74c3c;
+    } */
 
     .search_icon{
-    height: 40px;
-    width: 40px;
-    float: right;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 50%;
-    color:white;
-    text-decoration:none;
+        height: 40px;
+        width: 40px;
+        float: right;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        color:white;
+        text-decoration:none;
+    }
+
+
+    body {
+        font-size: 1.05rem;
+    }
+
+    .border-lines {
+        background-color: darkgrey;
+        height: 10px;
+    }
+
+    /** estilos buscador**/
+    .redondeado {
+        border-radius: 30px;
+    }
+    .confondo {
+        background-color: #def;
     }
 
   
+     .bg-secondary {
+  border-radius: 10px;
+  margin: 10px;
+  padding: 3%;
+}
+    .bg-ter{
+    border-radius: 10px;
+    padding: 9%;
+    background-color: white;
+    }
+    .bord{
+        border-radius: 25px;
+    }
     

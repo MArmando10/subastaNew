@@ -32,8 +32,9 @@ class ProductController extends Controller
             $Product = \App\Product::all();
             $offer = \App\Offers::all();
             $Users = \App\User::all();
+            $anterior = [];
 
-            return view('products.index',compact('Users','Product','products','offer'));
+            return view('products.index',compact('Users','Product','products','offer','anterior'));
         }
 
 
@@ -101,7 +102,7 @@ class ProductController extends Controller
         $producto->Largo =request()->input('Largo');
         $producto->Peso =request()->input('Peso');
         $producto->geografi =request()->input('geografi');
-        $producto->user_id = Auth::user()->id;
+        // $producto->user_id = Auth::user()->id;
 
         $producto->save();
 
@@ -176,39 +177,33 @@ class ProductController extends Controller
 
 
 
-    function searchBuscar(Request $request) {
+    function search(Request $request) {
 
-        Session::forget('message');
-        $anterior = $request->all();
-        if($request->categoria != "" )
-        {
-           $producto = producto::when($request->categoria,function($query,$request){return $query->where('categoria','like', $request .'%');})
-           ->orderBy('categoria', 'ASC')
-           ->paginate(10)
-           ->setPath ( '' );
-            $producto->appends ( array (
-            'categoria ' => $request->categoria
-            ) );
-         }
-             if(isset($producto)){
-               $count = $producto->total();
-             }else{
-                 $count = 0;
-              }
+        $search = $request->get('search');
+        $posts = DB::table('categories')->where('name','like','%'.search.'%')->paginate(5);
 
-             if ($count  > 0){
-                 Session::flash('message','Se encontraron '.$count.' registros en la busqueda.');
+        return view('product.index',['post'=> $posts]);
+        // $anterior = $request->all();
+        // if($request->titulo != ""){
+        //     $product = Product::when($request->titulo,function($query,$request){return $query->where('titulo','like', $request .'%');})
+        //     ->orderby('titulo','asc')
+        //                              ->paginate(5)
+        //                              ->setPath ( '' );
 
-                return view('products.index',compact('productos','anterior'));
-             }
-             else{
-                 Session::flash('message','No se encontraron registros en la busqueda.');
+        //                              $product->appends(array(
+        //                                  'titulo' => $request->titulo
+        //                              ) );
+        // }
 
-                         return view('products.index',compact('anterior'));
-             }
-          return redirect()->route('products.productsView');
-        }
 
+
+        //         $product->appends ( array (
+        //         'titulo' => $request->titulo
+        //         ) );
+        //         session('no se encontro prodcuto con ese titulo');
+        //         return view('products.index');
+
+       }
 
 
         public function getLicenseExpireAttribute($tiempo)

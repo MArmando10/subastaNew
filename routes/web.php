@@ -27,4 +27,4 @@ Route::resource('/offer','OffersController')->middleware('auth'); //offer.- ofer
 
 Route::resource('/subasta','SubastaController')->middleware('auth'); //auction.- subasta
 
-Route::get('/buscar','SubastaController@search')->name('buscar.show')->middleware('auth'); //buscar productos
+Route::get('/search','ProductController@search')->name('buscar.show')->middleware('auth'); //buscar productos
