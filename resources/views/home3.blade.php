@@ -3,8 +3,88 @@
 @section('body-config')
 
 @section('content')
+<style>
+    .tama{
+        height: 30px;
+        width: 30px;
+    }
+</style>
 
-{{-- <a class="btn btn-secondary mb-5" href="{{ route('product.create') }}">Agregar producto</a> --}}
+
+    <form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; ">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input size="45" class="tama redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+        <button class="btn btn-dark tama form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;"> Buscar</button>
+    </form>
+    <br>
+
+    <div class="row" >
+        <div class="col-lg-12 col-6 bg-secondary" style="color: dimgrey; width: 20%; height: auto;">
+          <h2 style="color: black">Mejores Precios</h2>
+          <br>
+            <div class="col-lg-3 bg-ter ">
+                    <img class="d-block w-100  bord" src="storage/moto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
+            </div>
+            <div class="col-lg-3 bg-ter offset-md-1">
+                    <img class="d-block w-100  bord" src="storage/auto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
+            </div>
+            <div class="col-lg-3 bg-ter offset-md-1">
+                    <img class="d-block w-100  bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 60%; height: auto;" >
+            </div>
+        </div>
+    </div>
+    <br><br><br>
+
+    <div class="row-2" style=" padding: $spacer !important; margin: 50px; justify-content: center">
+        <div class="col-md-6 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
+            <h2 style="color: black;">Explora lo mejor en hogar y cocina</h2>
+            <br>
+            <div class="col-lg-12">
+                <img class="d-block  offset-md-1  bord" src="storage/sillas.jpg" alt="First slide" style="width: 50%; height: auto;" >
+                <br>
+            </div>
+            <div class="col-12">
+                <img class="d-block bg-ter offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 50%; height: auto;" >
+            </div>
+        </div>
+        <div class="col-md-6 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
+            <h2 style="color: black;">Lo mejor en deportes</h2>
+            <br>
+            <div class="col-lg-8 ">
+                <img class="d-block   bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%; height: auto;" >
+            </div>
+            <div class="col-lg-4  ">
+                <div class="col-12 bg-ter ">
+                    <img class=" bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 90px; height: 50px;" >
+                    <br>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <br>
+                <img class="d-block bg-ter   bord" src="storage/gorra_deportiva.jpg" alt="First slide" style="width: 50%; height: auto;" >
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- <a class="btn btn-secondary mb-5" href="{{ route('product.create') }}">Agregar producto</a> --}}
 {{-- <div class="background" style="position: relative">
   <div class="container">
     <div class="row-2 justify-content-center tam">
@@ -45,43 +125,6 @@
   </div>
 
 </div> --}}
-
-<form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
-    <i class="fas fa-search" aria-hidden="true"></i>
-    <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
-    <button class="btn btn-dark form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;">Buscar</button>
-  </form>
-
-    <div class="row" >
-        <div class="col-lg-12 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
-          <h2 >Mejores Precios</h2>  
-          <div class="col-lg-3 bg-ter ">
-                    <img class="d-block w-100  bord" src="storage/moto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-            <div class="col-lg-3 bg-ter offset-md-1">
-                    <img class="d-block w-100  bord" src="storage/auto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-            <div class="col-lg-3 bg-ter offset-md-1">
-                    <img class="d-block w-100  bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-        </div>
-    </div>
-    <br><br><br>
-
-    <div class="row" >
-        <div class="col-lg-12 bg-secondary" style="color: dimgrey; width: 30%; height: auto;">
-            <div class="col-lg-3 bg-ter ">
-                    <img class="d-block w-100  bord" src="storage/moto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-            <div class="col-lg-3 bg-ter offset-md-1">
-                    <img class="d-block w-100  bord" src="storage/auto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-            <div class="col-lg-3 bg-ter offset-md-1">
-                    <img class="d-block w-100  bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-        </div>
-    </div>
-
 
 
 

@@ -148,7 +148,7 @@
 }
 
 body{
-    margin-top: 5rem; 
+    margin-top: 5rem;
 }
 .container{
     background-color: white;
@@ -228,7 +228,7 @@ body,html{
         background-color: #def;
     }
 
-  
+
      .bg-secondary {
   border-radius: 10px;
   margin: 10px;
@@ -237,9 +237,8 @@ body,html{
     .bg-ter{
     border-radius: 10px;
     padding: 9%;
-    background-color: white;
+    background-color: lavender;
     }
     .bord{
         border-radius: 25px;
     }
-    
