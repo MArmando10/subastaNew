@@ -22,15 +22,30 @@
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%">
 
-        <form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
-            <button class="btn btn-dark form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;">Buscar</button>
-        </form>
+        <div class="row justify-content-center" >
+            <div class="form-group col-md-2">
+               @if(!$anterior)
+               <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="categoria" type="text" placeholder="Buscar por Categoría" aria-label="Search">
+            </div>
+            @else
+            <div class="form-group col-md-2">
+                <input type="text" class="form-control" name="Categoria" placeholder="Buscar por Categoria" value="{{ (!$anterior['Categoria']) ? '' : $anterior['Categoria']}}">
+            </div>
+            @endif
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-search"></i> Buscar
+            </button>
+            <a href="{{route('subasta.index')}}"><button type="button" class="btn btn-default">
+                <i class="fas fa-broom"></i> Limpiar filtro </button></a>
+        </div>
 
 
         <br><br>
         <div class="border-lines"></div>
+        @if ($products->isEmpty())
+        <div><h3>No hay Subastas</h3></div>
+         @else
+
 
             <table id="example" class="table table-striped table-bordered" style="width:100%">
 
@@ -83,8 +98,9 @@
                         <br>
                     @endforeach
                 @endforeach
-             {{-- <div class="border-lines"></div> --}}
+                {{ $products->links() }}
             </table>
+            @endif
         </div>
 
     </div>

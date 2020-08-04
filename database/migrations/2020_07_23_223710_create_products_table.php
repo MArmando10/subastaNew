@@ -8,15 +8,13 @@ class CreateProductsTable extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
-            $table->integer('categoria_id');
+            $table->integer('categoria');
             $table->integer('condicion');
             $table->string('marca');
             $table->string('descripcion');
@@ -28,10 +26,10 @@ class CreateProductsTable extends Migration
             $table->integer('cantidad');
             // $table->boolean('refundSwitch');
             $table->string('Destino');
-            $table->integer('Alto');
-            $table->integer('Ancho');
-            $table->integer('Largo');
-            $table->integer('Peso');
+            $table->float('Alto');
+            $table->float('Ancho');
+            $table->float('Largo');
+            $table->float('Peso');
             $table->string('geografi');
             $table->integer('status')->default(1);
             $table->foreignId('user_id');

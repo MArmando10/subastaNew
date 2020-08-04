@@ -8,6 +8,7 @@ use Offers;
 use Session;
 use App\Image;
 use App\Product;
+use App\Categoria;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -27,11 +28,12 @@ class ProductController extends Controller
     public function index(Request $request, Product $product)
     {
 
-            // dd("entro");
-            $products = Product::orderBy('id','asc')->paginate(5);
+            $products = product::paginate(5);
+
             $Product = \App\Product::all();
             $offer = \App\Offers::all();
             $Users = \App\User::all();
+            // $categorias = \App\Categoria::all();
             $anterior = [];
 
             return view('products.index',compact('Users','Product','products','offer','anterior'));
@@ -102,7 +104,7 @@ class ProductController extends Controller
         $producto->Largo =request()->input('Largo');
         $producto->Peso =request()->input('Peso');
         $producto->geografi =request()->input('geografi');
-        // $producto->user_id = Auth::user()->id;
+        $producto->user_id = Auth::user()->id;
 
         $producto->save();
 
@@ -178,30 +180,17 @@ class ProductController extends Controller
 
 
     function search(Request $request) {
+        dd($request);
+        $anterior = $request->all();
 
-        $search = $request->get('search');
-        $posts = DB::table('categories')->where('name','like','%'.search.'%')->paginate(5);
+       $products = Product::when($request->categoria,function($query, $request){return $query->where('categoria','like', '%'. $request .'%');})
+                                     ->orderBy('categoria', 'ASC')
+                                     ->Paginator::defaultSimpleView('products.index')
+                                     ->setPath ( '' );
 
-        return view('product.index',['post'=> $posts]);
-        // $anterior = $request->all();
-        // if($request->titulo != ""){
-        //     $product = Product::when($request->titulo,function($query,$request){return $query->where('titulo','like', $request .'%');})
-        //     ->orderby('titulo','asc')
-        //                              ->paginate(5)
-        //                              ->setPath ( '' );
-
-        //                              $product->appends(array(
-        //                                  'titulo' => $request->titulo
-        //                              ) );
-        // }
-
-
-
-        //         $product->appends ( array (
-        //         'titulo' => $request->titulo
-        //         ) );
-        //         session('no se encontro prodcuto con ese titulo');
-        //         return view('products.index');
+                $products->appends ( array (
+                 'categoria' => $request->categoria
+                ) );
 
        }
 

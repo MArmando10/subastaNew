@@ -25,4 +25,8 @@ class Product extends Model
         return $this->hasMany(Offers::class);
     }
 
+    public function categoria() {
+        return $this->belongsTo(Categoria::class);
+    }
+
 }

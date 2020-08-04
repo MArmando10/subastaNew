@@ -21,12 +21,12 @@ class SubastaController extends Controller
      */
     public function index(Request $request)
     {
-        // if (auth()->check() && auth()->user()->admin){
+
         $products = product::orderBy('id', 'asc')->paginate(5);
-        // $products = Auth::user()->products;
+        $anterior = [];
         $Users = \App\User::all();
 
-        return view('subasta.index',compact('products','Users'));
+        return view('subasta.index',compact('products','Users','anterior'));
     }
     // else{
 

@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
+    Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
@@ -27,4 +27,10 @@ Route::resource('/offer','OffersController')->middleware('auth'); //offer.- ofer
 
 Route::resource('/subasta','SubastaController')->middleware('auth'); //auction.- subasta
 
-Route::get('/search','ProductController@search')->name('buscar.show')->middleware('auth'); //buscar productos
+Route::resource('/categoria','CategoriaController')->middleware('auth'); //auction.- subasta
+
+Route::any('searchproduct','ProductController@searchproduct')   ->name('product.search')->middleware('auth'); //buscar productos
+
+Route::any('searchsubasta','SubastaController@searchsubasta')   ->name('subasta.search')->middleware('auth'); //buscar subasta
+
+Route::any('searchhome','HomeController@searchhome')            ->name('home.search')->middleware('auth'); //buscar home

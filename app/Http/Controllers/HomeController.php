@@ -25,7 +25,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $isGame = true;
-        // dd($categoria[0]);
-        return view('home3');
+        $anterior = [];
+        return view('home3',compact('anterior'));
     }
 }

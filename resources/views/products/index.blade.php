@@ -6,14 +6,37 @@
 <div class="row col-lg-6 justify-content-center" ><h1><strong> Estas en productos</strong></h1></div>
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%;">
-        
-        <form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
+
+        {{-- <form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
             <i class="fas fa-search" aria-hidden="true"></i>
             <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
             <button class="btn btn-dark form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;">Buscar</button>
-          </form>
 
+          </form> --}}
+
+
+        <div class="row justify-content-center" >
+            <div class="form-group col-md-2">
+                @if(!$anterior)
+
+                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="categoria" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+            </div>
+                    @else
+                    <div class="form-group col-md-2">
+                        <input type="search" class="form-control" name="categoria" placeholder="Buscar por Categoria" value="{{ (!$anterior['categoria']) ? '' : $anterior['categoria']}}">
+                    </div>
+                @endif
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Buscar
+                </button>
+                <div class="form-group col-md-2">
+                <a href="{{route('product.index')}}"><button type="button" class="btn btn-default">
+                    <i class="fas fa-broom" style="text-align: right"></i> Limpiar filtro </button>
+                </a>
+            </div>
+        </div>
         <br><br>
+
         <div class="border-lines"></div>
 
     @if ($products->isEmpty())
@@ -68,7 +91,8 @@
             <br>
             @endforeach
         @endforeach
-    {{ $products->links() }}
+        {{ $products->links() }}
+
 </table>
     @endif
     </div>
