@@ -29,14 +29,14 @@ class ProductController extends Controller
     {
 
             $products = product::paginate(5);
-
+            // $categoria = \App\Categoria::all();
             $Product = \App\Product::all();
             $offer = \App\Offers::all();
             $Users = \App\User::all();
-            // $categorias = \App\Categoria::all();
+            $categorias = \App\Categoria::all();
             $anterior = [];
 
-            return view('products.index',compact('Users','Product','products','offer','anterior'));
+            return view('products.index',compact('Users','Product','products','offer','anterior','categorias'));
         }
 
 
@@ -48,7 +48,9 @@ class ProductController extends Controller
     public function create(Request $request)
     {
         // dd($request);
-        return view('products.create');
+        $categorias = DB::table('categories')->get()->pluck('nombre','id');
+
+        return view('products.create',compact('categorias'));
     }
 
     /**
@@ -136,11 +138,12 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        // dd($product->titulo);
         $now = now();
-        $ofer = \App\Offers::all();
+        $offer = \App\Offers::all();
         $oferta_maxima = $product->ofertas()->max('oferta');
 
-        return view('products.show',compact('product','now', 'oferta_maxima','ofer'));
+        return view('products.show',compact('product','now', 'oferta_maxima','offer'));
     }
 
     /**
@@ -180,15 +183,15 @@ class ProductController extends Controller
 
 
     function search(Request $request) {
-        dd($request);
+        // dd($request);
         $anterior = $request->all();
 
-       $products = Product::when($request->categoria,function($query, $request){return $query->where('categoria','like', '%'. $request .'%');})
+       $buscar = Product::when($request->categoria,function($query, $request){return $query->where('categoria','like', '%'. $request .'%');})
                                      ->orderBy('categoria', 'ASC')
                                      ->Paginator::defaultSimpleView('products.index')
                                      ->setPath ( '' );
 
-                $products->appends ( array (
+                $buscar->appends ( array (
                  'categoria' => $request->categoria
                 ) );
 
@@ -199,5 +202,6 @@ class ProductController extends Controller
         {
             return Carbon::parse($tiempo);
         }
+
 
 }

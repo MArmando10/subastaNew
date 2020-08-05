@@ -4,36 +4,32 @@
 
 
 <div class="row col-lg-6 justify-content-center" ><h1><strong> Estas en productos</strong></h1></div>
+
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%;">
-
-        {{-- <form class=" form-inline d-flex justify-content-center md-form form-sm mt-0" style="border-radius: 80px; margin: 2%; padding: 20px">
-            <i class="fas fa-search" aria-hidden="true"></i>
-            <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscarpor" type="search" placeholder="Buscar por Categoría" aria-label="Search">
-            <button class="btn btn-dark form-control-lg btn-rounded btn-sm my-0" type="submit" style="margin: 10px; width: 95px;;">Buscar</button>
-
-          </form> --}}
-
 
         <div class="row justify-content-center" >
             <div class="form-group col-md-2">
                 @if(!$anterior)
 
-                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="categoria" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscar" type="search" placeholder="Buscar por Categoría" aria-label="Search">
             </div>
                     @else
                     <div class="form-group col-md-2">
-                        <input type="search" class="form-control" name="categoria" placeholder="Buscar por Categoria" value="{{ (!$anterior['categoria']) ? '' : $anterior['categoria']}}">
+                        <input type="search" class="form-control" name="buscar" placeholder="Buscar por Categoria" value="{{ (!$anterior['categoria']) }}">
+                        @foreach($categorias as $id => $categoria)
+                        <option value="{{ $id }}">{{$categoria}}</option>
+                    @endforeach
                     </div>
                 @endif
                 <button type="submit" class="btn btn-primary">
                     <i class="fas fa-search"></i> Buscar
                 </button>
-                <div class="form-group col-md-2">
-                <a href="{{route('product.index')}}"><button type="button" class="btn btn-default">
-                    <i class="fas fa-broom" style="text-align: right"></i> Limpiar filtro </button>
-                </a>
-            </div>
+                <div class="form-group col-md-3">
+                    <a href="{{route('product.index')}}"><button type="button" class="btn btn-default">
+                        <i class="fas fa-broom" style="text-align: right"></i> Limpiar filtro </button>
+                    </a>
+                </div>
         </div>
         <br><br>
 
@@ -62,15 +58,14 @@
                     </div>
                     <div class="col info letra tam">
                         <h2 class="card-text ">{{$product->marca}}</h2>
-                        <p class="card-text ">350 GOI Mejor oferta al momento </p>
-                        <p class="card-text">(81 ofertas de subasta)</p>
+                        <p class="card-text id='maximo'">350 GOI Mejor oferta al momento </p>
+                        <p class="card-text" id="maximo">{{$offer}}  (81 ofertas de subasta)</p>
                         <p class="card-text">Envio gratis</p>
                     </div>
                     <div class="col tam">
                         <p class="card-text">Finalizacion de la subasta: {{$product->fechaFinal}}</p>
-                        <p class="card-text">De: Guadalajara. Jal.</p>
-                        <p class="card-text">México</p>
-                        <p class="card-text">Envió Nacional</p>
+                        <p class="card-text">De: {{$product->geografi}}</p>
+                    <p class="card-text">{{$product->Destino}}</p>
                     </div>
                     <div class="col float-right align-self-end">
                         @if ($product->status==1)
@@ -98,5 +93,18 @@
     </div>
 </div>
 
+
+
+<script>
+    function maximo(){
+        var mayor = Math.max('maximo');
+        document.write(mayor);
+    }
+
+    /* Funcion suma. */
+    function total(valor) {
+
+}
+</script>
 
 @endsection

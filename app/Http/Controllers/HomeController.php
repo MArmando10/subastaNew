@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use \App\Image;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -25,7 +26,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $isGame = true;
+        $product = \App\Product::all();
         $anterior = [];
-        return view('home3',compact('anterior'));
+        return view('home3',compact('anterior','product'));
     }
 }

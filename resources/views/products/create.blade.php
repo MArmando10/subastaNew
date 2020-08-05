@@ -19,21 +19,21 @@
         background-color: darkgrey;
         height: 4px;
         width: 100%;
-    } 
+    }
 </style>
-
-<div class="card content">
+{{-- {{$categorias}} --}}
+<div class="card content"  style="border: double">
   <div class="card-header text-center">
     <h2 style="font-size: 3rem;">Subasta un producto</h2>
   </div>
-  <div class="card-body">
+  <div class="card-body" >
 
       {!! Form::open(['action' => 'ProductController@store', 'method' => 'post', 'files' => true], ['class' => 'inline-form']) !!}
-     
+
         {{$errors}}
       <div class="form-group col-12">
         <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de producto</h3>
-        
+
         <!-- Titulo -->
         <div class="form-group row">
           {{ Form::label('Titulo', null, ['class' => 'col-sm-2 col-form-label']) }}
@@ -55,12 +55,28 @@
         </div>
 
         <!-- Categoria -->
-        <div class="form-group row">
+        {{-- <div class="form-group row">
           {{ Form::label('Categoria', null, ['class' => 'col-sm-2 col-form-label']) }}
           <div class="col-sm-10">
-            {{ Form::select('categoria', ['1' => 'Tecnología', '2' => 'Hogar', '3' => 'Deportes', '4' => 'Ropa', '5' => 'Juguetes', '6' => 'Otros' ], 'categoria', ['class' => 'form-control']) }}
+            {{ Form::select('categoria_id', ['1' => 'Tecnología', '2' => 'Hogar', '3' => 'Deportes', '4' => 'Ropa', '5' => 'Juguetes', '6' => 'Otros' ], 'categoria', ['class' => 'form-control']) }}
           </div>
+        </div> --}}
+
+        <div class="form-group">
+            <label for="categoria">Categoria</label>
+                <select class="form-control" id="categoria" name="categoria" style="font-weight: bold">
+                    <option value="">--> Seleccione <-- </p></option>
+                    @foreach($categorias as $id => $categoria)
+                        <option value="{{ $id }}">{{$categoria}}</option>
+                    @endforeach
+                </select>
+                @error('categoria')
+                <span class="invalid-feedback d-block" role="alert">
+                <strong>{{$message}}</strong>
+                </span>
+                @enderror
         </div>
+
 
         <!-- Condicion -->
         <div class="form-group row">
@@ -157,7 +173,7 @@
       </div> --}}
   <!-- Detalles de envio -->
   <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de envío</h3>
-  
+
   <!-- Destino -->
   <div class="form-group row">
     {{ Form::label('Destino', null, ['class' => 'col-sm-2 col-form-label']) }}
@@ -168,7 +184,7 @@
 
   <!-- dimensiones del producto -->
   <!-- dimensiones de alto -->
-  <div class="form-group row">  
+  <div class="form-group row">
     <div class="col-sm-6">
       {{ Form::label('Alto',null,['class'=>'row justify-content-between col-form-label']) }}
       {{ Form::number('Alto', '', ['class' => 'form-control']) }}
@@ -181,7 +197,7 @@
       {{ Form::select('Ancho', ['1' => 'cm', '2' => 'mm', '3' => 'm'], 'Ancho', ['class' => 'form-control']) }}
     </div>
   </div>
- 
+
   <!-- dimensiones de largo -->
   <div class="form-group row">
     <div class="col-sm-6">
@@ -196,7 +212,7 @@
       {{ Form::select('Peso', ['1' => 'kg', '2' => 'mg', '3' => 'g'], 'Peso', ['class' => 'form-control']) }}
     </div>
   </div>
- 
+
   <!-- ubicacion del articulo -->
   <div class="form-group row">
     {{ Form::label('Ubicacion del artículo', null, ['class' => 'col-sm-2 col-form-label']) }}
@@ -212,7 +228,7 @@
     <div class="d-flex justify-content-between mb-8">
       <a class="btn btn-primary" role="button" href="{{route('product.index')}}"><i class="fas fa-arrow-left"></i> Regresar</a>
         {{Form::submit('Guardar y continuar', ['class' => 'btn btn-primary fas fa-save'])}}
-    
+
     {!! Form::close() !!}
     </div>
   </div>

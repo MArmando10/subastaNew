@@ -21,11 +21,16 @@
         <input type="text" class="form-control" name="Categoria" placeholder="Buscar por Categoria" value="{{ (!$anterior['Categoria']) ? '' : $anterior['Categoria']}}">
     </div>
     @endif
-    <button type="submit" class="btn btn-primary">
-        <i class="fas fa-search"></i> Buscar
-    </button>
-    <a href="{{route('home')}}"><button type="button" class="btn btn-default">
-        <i class="fas fa-broom"></i> Limpiar filtro </button></a>
+        <button type="submit" class="btn btn-primary">
+          <i class="fas fa-search"></i> Buscar
+        </button>
+    <div class="form-group col-md-2">
+        <a href="{{route('home')}}">
+            <button type="button" class="btn btn-default">
+                <i class="fas fa-broom"></i> Limpiar filtro
+            </button>
+        </a>
+    </div>
 </div>
     <br>
 
@@ -33,15 +38,19 @@
         <div class="col-lg-12 col-6 bg-secondary" style="color: dimgrey; width: 20%; height: auto; margin: auto">
           <h2 style="color: black">Mejores Precios</h2>
           <br>
-            <div class="col-lg-3 bg-ter ">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="col-lg-3 bg-ter ">
                     <img class="d-block w-100  bord" src="storage/moto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-            <div class="col-lg-3 bg-ter offset-md-1">
+                </div>
+                <div class="col-lg-3 bg-ter offset-md-1">
                     <img class="d-block w-100  bord" src="storage/auto.jpeg" alt="First slide" style="width: 60%; height: auto;" >
-            </div>
-            <div class="col-lg-3 bg-ter offset-md-1">
+                </div>
+                <div class="col-lg-3 bg-ter offset-md-1">
                     <img class="d-block w-100  bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 60%; height: auto;" >
+                </div>
             </div>
+          </div>
         </div>
     </div>
 
@@ -139,6 +148,10 @@
   </div>
 
 </div> --}}
+
+
+
+
 
 
 

@@ -112,7 +112,7 @@ class SubastaController extends Controller
 
 
     public function search(Request $request){
-        $product = product::where('categoria','like','%' .$busqueda. '%' )->paginate(4);
+        $product = product::where('categoria','like','%' .$request. '%' )->paginate(4);
 
         return view('subasta.index',compact('product'));
     }
