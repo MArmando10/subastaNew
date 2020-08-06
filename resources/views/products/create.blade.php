@@ -224,9 +224,10 @@
     </div>
 
 
-
-    <div class="form-group">
-        <div id="mapa" style="height: 300px"></div>
+    <div class="col-sm-8" style="background: cadetblue">
+        <div class="form-group">
+            <div id="mapa" style="height: 400px" style="ba: black">mapa</div>
+        </div>
     </div>
   </div>
 </div>
