@@ -98,7 +98,7 @@
     display: flex;
     min-width: 350px;
     max-width: 370px;
-    padding: 10px;
+    padding: 8px;
 }
 
 /* Make the image responsive */
@@ -231,14 +231,20 @@ body,html{
 
      .bg-secondary {
   border-radius: 10px;
-  margin: 10px;
+  margin: 8px;
   padding: 3%;
 }
     .bg-ter{
-    border-radius: 10px;
-    padding: 9%;
-    background-color: lavender;
+    border-radius: 20px;
+    padding: 3%;
+    /* background-color: lavender; */
+    background-color: black;
     }
+    .bg-term{
+        border-radius: 40px;
+        padding: 1%;
+        background-color: black;
+        }
     .bord{
         border-radius: 25px;
     }

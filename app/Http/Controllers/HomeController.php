@@ -30,4 +30,6 @@ class HomeController extends Controller
         $anterior = [];
         return view('home3',compact('anterior','product'));
     }
+
+
 }

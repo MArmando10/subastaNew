@@ -44,10 +44,6 @@ class ImageController extends Controller
      * @param  \App\Image  $image
      * @return \Illuminate\Http\Response
      */
-    public function show(Image $image)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -82,4 +78,17 @@ class ImageController extends Controller
     {
         //
     }
+
+
+
+
+    public function showImage( Request $request, Image $image)
+    {
+        // dd($request);
+        $image = Image::make(public_path('/storage/pelotaas.jpg') );
+        $image->resize(200,100);
+
+        return $image->response('jpg');
+    }
+
 }

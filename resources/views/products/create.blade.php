@@ -222,6 +222,12 @@
       </div> <!-- boton cambiar ubicacion -->
       <button type="button" class="btn btn-light">Cambiar</button>
     </div>
+
+
+
+    <div class="form-group">
+        <div id="mapa" style="height: 300px"></div>
+    </div>
   </div>
 </div>
 </div>
@@ -233,5 +239,8 @@
     </div>
   </div>
   <br>
+
+
+
 
 @endsection

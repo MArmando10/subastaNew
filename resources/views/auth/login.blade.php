@@ -5,13 +5,16 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
 @endsection
 
 @section('content')
-<div class="container container-auth">
+<div class="container container-auth" style="background:  ">
     <div class="row justify-content-center card-auth">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
+                <div class="card-body justify-content-center" >
+                    <div class="col-lg-12">
+                    <img src="storage/goideal.jpeg" alt="" style="height: 70%; width: 100%; ">
+                </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -49,23 +52,25 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __(' Remember Me') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4 buttons-box-auth">
+                            <div class="col-md-8 offset-md-2 buttons-box-auth">
                                 <button type="submit" class="btn btn-primary button-auth">
                                     {{ __('Login') }}
                                 </button>
+                                <br>
 
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link button-auth" href="{{ route('password.request') }}">
                                         {{ __('Forgot Your Password?') }}
                                     </a>
                                 @endif
+                                <br>
                             </div>
                         </div>
                     </form>

@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+
+
     Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
@@ -34,3 +37,5 @@ Route::any('searchproduct','ProductController@searchproduct')   ->name('product.
 Route::any('searchsubasta','SubastaController@searchsubasta')   ->name('subasta.search')->middleware('auth'); //buscar subasta
 
 Route::any('searchhome','HomeController@searchhome')            ->name('home.search')->middleware('auth'); //buscar home
+
+Route::get('/showimage','ImageController@showImage')->middleware('auth');
