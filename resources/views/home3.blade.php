@@ -51,7 +51,7 @@
 
     <!--Empieza carusel de imagenes-->
 <div class="row" style=" height: auto;  ">
-    <div id="myCarouselCustom" class="carousel slide col-sm-12 col-12 bg-secondary" data-ride="carousel" style="height: 500px;">
+    <div id="myCarouselCustom" class="carousel slide col-sm-12 col-12 bg-secondary" data-ride="carousel" style="height: 450px;">
         <h2 style="color: black">Mejores Precios</h2>
         <br><br>
         <!-- Indicators -->
