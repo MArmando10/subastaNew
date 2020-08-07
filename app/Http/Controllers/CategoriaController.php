@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Categoria;
 use Illuminate\Http\Request;
 
+use function Ramsey\Uuid\v1;
+
 class CategoriaController extends Controller
 {
     /**
@@ -14,7 +16,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-
+        // return view('categoria.index');
     }
 
     /**

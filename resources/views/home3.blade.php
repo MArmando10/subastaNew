@@ -12,7 +12,7 @@
     .bg-secondary {
         border-radius: 20px;
         /* margin: 10px; */
-        padding: 10%;
+        /* padding: 10%; */
         height: 20%;
         width: 20%;
         /* justify-content: center; */
@@ -39,6 +39,9 @@
             </button>
         </a>
     </div>
+    <div class="col-sm-2" style="text-align: center">
+        <button type="button" href="product.index">Categorias</button>
+    </div>
 </div>
     <br>
 
@@ -47,8 +50,8 @@
 
 
     <!--Empieza carusel de imagenes-->
-<div class="row" style="width: 30%; height: auto; margin: auto; color: dimgrey;">
-    <div id="myCarouselCustom" class="carousel slide col-md-12 col-12 bg-secondary" data-ride="carousel">
+<div class="row" style=" height: auto;  ">
+    <div id="myCarouselCustom" class="carousel slide col-sm-12 col-12 bg-secondary" data-ride="carousel" style="height: 500px;">
         <h2 style="color: black">Mejores Precios</h2>
         <br><br>
         <!-- Indicators -->
@@ -60,19 +63,26 @@
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="item active">
-                <img class="d-block bg-term   bord" src="storage/auto.jpeg" alt="First slide" style="width: 40%; height: auto; float: left;  " >
-                <img class="d-block bg-term offset-md-1 bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 40%; height: auto; float: right;  " >
+            <div class="item active ">
+               <div class="col-sm-3"> <img class="d-block bg-ter bord" src="storage/auto.jpeg" alt="First slide" style="width: 100%;"></div>
+                <div class="col-sm-3" style="margin: 0 40px"><img class="d-block bg-ter bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 80%; margin: 10px 0"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 80%;"></div>
+                <div class="dol-sm-3"><img class="d-block bg-ter bord" src="storage/deportiva.jpg" alt="First slide" style="width: 15%; padding: 15px"></div>
             </div>
             <div class="item">
-                <img class="d-block bg-term   bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 40%; height: auto;  float: left;" >
-                <img class="d-block bg-term   bord" src="storage/deportiva.jpg" alt="First slide" style="width: 40%; height: auto; float: right;" >
+                <div class="col-sm-3" ><img class="d-block bg-ter   bord" src="storage/auto.jpeg" alt="First slide" style="width: 100%;"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter   bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 80%;"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter   bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 80%;"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter   bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%;"></div>
             </div>
             <div class="item">
-                <img class="d-block bg-term offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 40%; height: auto;  float: left; " >
-                <img class="d-block bg-term   bord" src="storage/sillas.jpg" alt="First slide" style="width: 40%; height: auto; float: right;" >
+                <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/lampara.jpg"       alt="First slide" style="width: 80%;"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/sillas.jpg"        alt="First slide" style="width: 90%; padding: 15px 0"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/auto.jpeg"         alt="First slide" style="width: 100%;"></div>
+                <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 100%;"></div>
             </div>
         </div>
+        <br><br>|
     </div>
         <!-- Controls -->
         {{-- <a class="left carousel-control" href="#myCarousel" data-slide="">
@@ -91,36 +101,35 @@
   <!--Termina carusel de imagenes-->
 
 
-    <div class="row-1" style=" padding: $spacer !important; margin: 50px; justify-content: center;">
-        <div class="col-lg-5 bg-secondary" style="color: dimgrey; width: 50%; height: auto; margin: auto; flex-flow: column wrap;">
+    <div class="row" style=" padding: $spacer !important; margin: 50px; justify-content: center;">
+        <div class="col-sm-5 bg-secondary">
             <h2 style="color: black; text-align: center" >Explora lo mejor en hogar y cocina</h2>
             <br>
-            <div class="col-md-5" style="color: dimgrey; width: 50%; height: auto;  flex-flow: column wrap;">
+            <div class="row" style="justify-content: center">
                 <img class="d-block bg-ter   offset-md-1  bord" src="storage/sillas.jpg" alt="First slide" style="width: 300px; height: auto;  flex-flow: column wrap;" >
                 <br>
-            </div>
-            <div class="col-lg-12 col-12" >
+            </div><br>
+            <div class="row" style="justify-content: center">
                 <img class="d-block bg-term offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 300px; height: 200px;  flex-flow: column wrap;" >
             </div>
         </div>
         <br>
-    </div>
-    <div class="row">
-        <div class="col-md-8 bg-secondary" style="color: dimgrey; width: 30%; height: auto;  flex-flow: column wrap; margin: 35px; ">
-            <h2 style="color: black;">Lo mejor en deportes</h2>
+
+
+        <div class="col-sm-5 bg-secondary">
+            <h2 style="color: black; text-align: center">Lo mejor en deportes</h2>
             <br>
-            <div class="col-md-10" style="float: right">
-                <img class="d-block   bg-term bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%; height: auto;  flex-flow: column wrap;" >
-            </div>
-            <div class="col-lg-4 " style="float: ">
-                <img class="bg-ter bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 100px; height: auto; flex-flow: column wrap;" >
-                <br>
-            </div>
-            <div class="col-md-4">
-                <br>
-                <img class="d-block bg-ter   bord" src="storage/gorra_deportiva.jpg" alt="First slide" style="width: 90%; height: auto;  flex-flow: column wrap;" >
+            <div class="row">
+                <img class="d-block bg-ter bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%; height: auto;  flex-flow: column wrap;" >
+
+            <div class="col-sm-4">
+                <img class="bg-ter bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 200px; height: auto; flex-flow: column wrap;" >
+                <br><br>
+                <img class="d-block bg-ter bord" src="storage/gorra_deportiva.jpg" alt="First slide" style="width: 120%; height: auto;  flex-flow: column wrap;" >
+
             </div>
         </div>
+
     </div>
 
 

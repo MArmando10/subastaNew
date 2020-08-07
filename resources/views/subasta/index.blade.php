@@ -11,24 +11,21 @@
         background-color: darkgrey;
         height: 10px;
     }
-    /* # {
-  opacity: 0.6;
-} */
-
-
 </style>
 <br>
+
 <div class="row col-lg-6 justify-content-center"><h1><strong>Estas en Subastas</strong></h1></div>
+
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%">
 
         <div class="row justify-content-center" >
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
                @if(!$anterior)
                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="categoria" type="text" placeholder="Buscar por Categoría" aria-label="Search">
             </div>
             @else
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3">
                 <input type="text" class="form-control" name="Categoria" placeholder="Buscar por Categoria" value="{{ (!$anterior['Categoria']) ? '' : $anterior['Categoria']}}">
             </div>
             @endif
@@ -62,15 +59,15 @@
                                     @endif
                                 </div>
                                 <div class="col info letra tam">
-                                    <h2 class="card-text ">{{$product->marca}}</h2>
-                                    <p class="card-text ">350 GOI Mejor oferta al momento </p>
+                                    <h2 class="card-text text-uppercase"><strong>{{$product->marca}}</strong></h2>
+                                    <p class="card-text "><strong>${{ $product->ofertas()->max('oferta') }}__ GOI Mejor oferta al momento </strong></p>
                                     <p class="card-text">(81 ofertas de subasta)</p>
-                                    <p class="card-text">Envio gratis</p>
+                                    <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p>
                                 </div>
 
                                 <div class="row">
                                     <div class="col tam">
-                                        <p class="card-text">Finalizacion de la subasta: {{$product->fechaFinal}}</p>
+                                        <p class="card-text"><strong>Finalizacion de la subasta:</strong> {{$product->fechaFinal}}</p>
                                         <p class="card-text">De: Guadalajara. Jal.</p>
                                         <p class="card-text">México</p>
                                         <p class="card-text">Envió Nacional</p>
@@ -98,7 +95,7 @@
                         <br>
                     @endforeach
                 @endforeach
-                {{ $products->links() }}
+                {{-- {{ $products->links() }} --}}
             </table>
             @endif
         </div>

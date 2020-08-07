@@ -214,19 +214,18 @@
   </div>
 
   <!-- ubicacion del articulo -->
-  <div class="form-group row">
+  <div class="form-group row" style="justify-content: center">
     {{ Form::label('Ubicacion del artículo', null, ['class' => 'col-sm-2 col-form-label']) }}
-    <div class="col-sm-8">
-      <div class="input-group">
-        {{ Form::text('geografi', '', ['aria-label'=> 'Dollar amount (with dot and two decimal places)', 'class' => 'form-control']) }}
+    <div class="col-sm-8" >
+      <div class="input-group" >
+        {{-- {{ Form::text('geografi', '', ['aria-label'=> 'Dollar amount (with dot and two decimal places)', 'class' => 'form-control']) }} --}}
       </div> <!-- boton cambiar ubicacion -->
       <button type="button" class="btn btn-light">Cambiar</button>
     </div>
 
-
     <div class="col-sm-8" style="background: cadetblue">
         <div class="form-group">
-            <div id="mapa" style="height: 400px" style="ba: black">mapa</div>
+            <div id="mapa" style="height: 400px" style="color: black; ">mapa</div>
         </div>
     </div>
   </div>

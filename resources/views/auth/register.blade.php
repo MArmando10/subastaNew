@@ -9,7 +9,10 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
     <div class="row justify-content-center card-auth">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header text-center">{{ __('Register') }}</div>
+                <div class="col-lg-12">
+                    <img src="storage/goideal.jpeg" alt="" style="height: 70%; width: 100%; ">
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

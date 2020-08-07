@@ -27,8 +27,9 @@ class HomeController extends Controller
     {
         $isGame = true;
         $product = \App\Product::all();
+        $Users = \App\User::all();
         $anterior = [];
-        return view('home3',compact('anterior','product'));
+        return view('home3',compact('anterior','product','Users'));
     }
 
 

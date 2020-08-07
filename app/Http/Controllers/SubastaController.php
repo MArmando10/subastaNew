@@ -22,7 +22,7 @@ class SubastaController extends Controller
     public function index(Request $request)
     {
 
-        $products = product::orderBy('id', 'asc')->paginate(5);
+        $products = DB::table('products')->paginate(5);
         $anterior = [];
         $Users = \App\User::all();
 

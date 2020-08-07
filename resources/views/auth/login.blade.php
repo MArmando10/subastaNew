@@ -9,7 +9,7 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
     <div class="row justify-content-center card-auth">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header text-center">{{ __('Login') }}</div>
 
                 <div class="card-body justify-content-center" >
                     <div class="col-lg-12">
@@ -50,7 +50,7 @@ ondragstart="return false;" ondrop="return false;" style="width:100%; background
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
+                                    <br>
                                     <label class="form-check-label" for="remember">
                                         {{ __(' Remember Me') }}
                                     </label>

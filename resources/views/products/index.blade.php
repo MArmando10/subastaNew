@@ -9,7 +9,7 @@
     <div class="col-lg-6" style="min-width: 100%;">
 
         <div class="row justify-content-center" >
-            <div class="form-group col-md-2">
+            <div class="form-group col-md-3 col-2">
                 @if(!$anterior)
 
                 <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscar" type="search" placeholder="Buscar por Categoría" aria-label="Search">
@@ -57,15 +57,15 @@
                         @endif
                     </div>
                     <div class="col info letra tam">
-                        <h2 class="card-text ">{{$product->marca}}</h2>
-                        <p class="card-text id='maximo'">350 GOI Mejor oferta al momento </p>
-                        <p class="card-text" id="maximo">{{$offer}}  (81 ofertas de subasta)</p>
-                        <p class="card-text">Envio gratis</p>
+                        <h2 class="card-text text-uppercase"><strong>{{$product->marca}}</strong></h2>
+                        <p class="card-text id='maximo'">Mejor oferta al momento <strong>${{ $product->ofertas()->max('oferta') }}</strong></p>
+                        <p class="card-text" id="maximo">({{count($product->ofertas)}} ofertas de subasta)</p>
+                        <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p>
                     </div>
                     <div class="col tam">
-                        <p class="card-text">Finalizacion de la subasta: {{$product->fechaFinal}}</p>
+                        <p class="card-text"><strong> Finalizacion de la subasta:</strong> {{$product->fechaFinal}}</p>
                         <p class="card-text">De: {{$product->geografi}}</p>
-                    <p class="card-text">{{$product->Destino}}</p>
+                        <p class="card-text">{{$product->Destino}}</p>
                     </div>
                     <div class="col float-right align-self-end">
                         @if ($product->status==1)
@@ -100,11 +100,6 @@
         var mayor = Math.max('maximo');
         document.write(mayor);
     }
-
-    /* Funcion suma. */
-    function total(valor) {
-
-}
 </script>
 
 @endsection

@@ -1,3 +1,4 @@
+
 .back-logo {
     background-color: white;
     width: 100%;
@@ -6,7 +7,7 @@
     border-bottom-right-radius: 30px;
     text-align: center;
 }
-
+/* color para barra de navegacion */
 .navigation-bar-style {
     padding: 0;
     border-color: red;
@@ -17,6 +18,7 @@
     max-height: 60px;
 }
 
+/* color de letra */
 .navigation-font {
     color: white !important;
     font-family: sans-serif;
@@ -129,7 +131,7 @@
 
 .container-auth {
   max-width: 100%;
-  width: 50%;
+  width: 100%;
 }
 
 .buttons-box-auth {
@@ -236,9 +238,9 @@ body,html{
 }
     .bg-ter{
     border-radius: 20px;
-    padding: 3%;
+    padding: 5%;
     /* background-color: lavender; */
-    background-color: black;
+    background-color:white;
     }
     .bg-term{
         border-radius: 40px;
@@ -248,3 +250,14 @@ body,html{
     .bord{
         border-radius: 25px;
     }
+
+    .navbar-toggler {
+        background-color: white;
+        height: 30px;
+    }
+
+    /* @media(max-width: 500px) {
+        img {
+            max-width: 160px;
+        }
+    } */

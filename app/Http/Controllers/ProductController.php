@@ -28,7 +28,9 @@ class ProductController extends Controller
     public function index(Request $request, Product $product)
     {
 
-            $products = product::paginate(5);
+            // $products = product::paginate(5);
+            $products = DB::table('products')->paginate(5);
+            // dd($products);
             // $categoria = \App\Categoria::all();
             $Product = \App\Product::all();
             $offer = \App\Offers::all();
