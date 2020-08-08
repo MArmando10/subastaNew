@@ -20,4 +20,10 @@ class Image extends Model
     public function subasta(){
         return $this->hasMany('App\Image');
     }
+
+    public function user(){
+        return $this->HasOne('App\user');
+    }
+
+    // protected $fillable = ['path'];
 }

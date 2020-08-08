@@ -52,4 +52,8 @@ class User extends Authenticatable
     public function ofertas(){
         return $this->hasMany(Oferta::class);
     }
+
+    public function imagenes(){
+        return $this->hasMany(Image::class);
+    }
 }

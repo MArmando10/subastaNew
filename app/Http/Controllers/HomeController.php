@@ -26,11 +26,11 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $isGame = true;
-        $product = \App\Product::all();
-        $Users = \App\User::all();
+        $products = \App\Product::all();
+        $users = \App\User::all();
+        // dd($users);
         $anterior = [];
-        return view('home3',compact('anterior','product','Users'));
+        return view('home3',compact('anterior','products','users'));
     }
-
 
 }
