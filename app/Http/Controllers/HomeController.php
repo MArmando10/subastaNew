@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Product;
 use \App\Image;
 use Illuminate\Http\Request;
@@ -26,6 +27,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $isGame = true;
+        // $product = \App\Product::paginate(15);
         $products = \App\Product::all();
         $users = \App\User::all();
         // dd($users);

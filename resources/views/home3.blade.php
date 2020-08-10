@@ -76,8 +76,9 @@
 {{--
                     @if($product->imagenes->count() > 0)
                     <div class="item"> --}}
-                        <div class="col-sm-2">
-                            <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 100%;">
+                        <div class="col-sm-2" id="mostrar">
+                            <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 70%;">
+                            <a href="product.show"></a>
                         </div>
                     {{-- </div>
                     @endif --}}
@@ -91,7 +92,7 @@
             <div class="item">
                 @foreach($products as $product)
                 <div class="col-sm-2">
-                    <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 100%;">
+                    <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 70%;">
                 </div>
                 @endforeach
                 {{-- <div class="col-sm-3" ><img class="d-block bg-ter   bord" src="storage/auto.jpeg" alt="First slide" style="width: 100%;"></div>
@@ -99,35 +100,20 @@
                 <div class="col-sm-3"><img class="d-block bg-ter   bord" src="storage/pelotaas.jpg" alt="First slide" style="width: 80%;"></div>
                 <div class="col-sm-3"><img class="d-block bg-ter   bord" src="storage/deportiva.jpg" alt="First slide" style="width: 60%;"></div> --}}
             </div>
-            <div class="item">
+            {{-- <div class="item"> --}}
 
-                <div class="col-sm-2">
-                    <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 100%;">
-                </div>
+                {{-- <div class="col-sm-2"> --}}
+                    {{-- <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 100%;"> --}}
+                {{-- </div> --}}
                 {{-- <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/lampara.jpg"       alt="First slide" style="width: 80%;"></div>
                 <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/sillas.jpg"        alt="First slide" style="width: 90%; padding: 15px 0"></div>
                 <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/auto.jpeg"         alt="First slide" style="width: 100%;"></div>
                 <div class="col-sm-3"><img class="d-block bg-ter bord" src="storage/auto_paisaje.jpeg" alt="First slide" style="width: 100%;"></div> --}}
-            </div>
+            {{-- </div> --}}
         </div>
-
-
         <br><br>
     </div>
-        <!-- Controls -->
-        {{-- <a class="left carousel-control" href="#myCarousel" data-slide="">
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="right carousel-control" href="#myCarousel" data-slide="" style="">
-            <span class="glyphicon glyphicon-chevron-right"></span>
-            <span class="sr-only">Next</span>
-        </a> --}}
-    </div>
-    <!-- Custom Controls -->
-    {{-- <a href="javascript:void(0);" id="prevBtn">Siguiente</a>
-    <a href="javascript:void(0);" id="nextBtn">Anterior</a> --}}
-
+</div>
   <!--Termina carusel de imagenes-->
 
 
@@ -140,7 +126,7 @@
                 <br>
             </div><br>
             <div class="row" style="justify-content: center">
-                <img class="d-block bg-term offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 300px; height: 200px;  flex-flow: column wrap;" >
+                <img class="d-block bg-ter offset-md-1 bord" src="storage/lampara.jpg" alt="First slide" style="width: 300px; height: 200px;  flex-flow: column wrap;" >
             </div>
         </div>
         <br>
@@ -176,20 +162,15 @@
 
 
 
-    function mostrar() {
-
-        let x= []
-        x.push('hola')
-        x.push('2')
-        x.push('uno')
-        var i = 0;
-        for(i = 0; i < 3; i ++){
+    function mostrar(mostrar)
+    {
+        for(i = 0; i < 3; i ++)
+        {
             console.log(x[i]);
-
         }
     }
-
     mostrar()
+
     </script>
 
 

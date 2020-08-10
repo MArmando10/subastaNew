@@ -20,17 +20,20 @@
         height: 4px;
         width: 100%;
     }
+    .footer{
+           background-color: dimgrey;
+    }
 </style>
 {{-- {{$categorias}} --}}
 <div class="card content"  style="border: double">
-  <div class="card-header text-center">
+  <div class="card-header text-center" style="background-color: black; color: white">
     <h2 style="font-size: 3rem;">Subasta un producto</h2>
   </div>
   <div class="card-body" >
 
       {!! Form::open(['action' => 'ProductController@store', 'method' => 'post', 'files' => true], ['class' => 'inline-form']) !!}
 
-        {{$errors}}
+        {{-- {{$errors}} --}}
       <div class="form-group col-12">
         <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de producto</h3>
 
@@ -181,9 +184,10 @@
       {{ Form::select('Destino', ['1' => 'Nacional', '2' => 'Internacional'], 'condition_id', ['class' => 'form-control']) }}
     </div>
   </div>
-
+<br>
   <!-- dimensiones del producto -->
   <!-- dimensiones de alto -->
+  <h2><strong>Peso y dimensiones del paquete</strong></h2>
   <div class="form-group row">
     <div class="col-sm-6">
       {{ Form::label('Alto',null,['class'=>'row justify-content-between col-form-label']) }}
@@ -212,23 +216,64 @@
       {{ Form::select('Peso', ['1' => 'kg', '2' => 'mg', '3' => 'g'], 'Peso', ['class' => 'form-control']) }}
     </div>
   </div>
-
+<br><br>
   <!-- ubicacion del articulo -->
   <div class="form-group row" style="justify-content: center">
-    {{ Form::label('Ubicacion del artículo', null, ['class' => 'col-sm-2 col-form-label']) }}
+    {{-- {{ Form::label('Ubicacion del artículo', null, ['class' => 'col-sm-2 col-form-label']) }}
     <div class="col-sm-8" >
       <div class="input-group" >
-        {{-- {{ Form::text('geografi', '', ['aria-label'=> 'Dollar amount (with dot and two decimal places)', 'class' => 'form-control']) }} --}}
+        {{ Form::text('geografi', '', ['aria-label'=> 'Dollar amount (with dot and two decimal places)', 'class' => 'form-control']) }}
       </div> <!-- boton cambiar ubicacion -->
-      <button type="button" class="btn btn-light">Cambiar</button>
-    </div>
+      {{-- <button type="button" class="btn btn-light">Cambiar</button>
+    </div> --}}
 
-    <div class="col-sm-8" style="background: cadetblue">
+    <fieldset class="border p-4">
+        <legend class="text-primary">Ubicación</legend>
+
+        <div class="form-group">
+            <label for="formbuscador">Coloca la dirección donde se encuentra el producto</label>
+            <input type="text" id="formbuscador" class="form-control" placeholder="Calle del Establecimiento">
+
+            <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una direccion estimada, mueve el Pin hacia el lugar correcto</p>
+        </div>
+    </fieldset>
+
+
+    <div class="col-sm-8" style="background: silver">
+        <br>
         <div class="form-group">
             <div id="mapa" style="height: 400px" style="color: black; ">mapa</div>
         </div>
+
+        <p class="informacion">Confirma que los campos son correctos</p>
+
+        <div class="form-group">
+            <label for="direccion">Dirección</label>
+
+            <input type="text" id="direccion" class="form-control @error('direccion') is-invalid @enderror" placeholder="Dirección" value="{{old('direccion')}}">
+            {{-- <div class="invalid-feedback">
+                {{$message}}
+            </div> --}}
+        </div>
+
+        <div class="form-group">
+            <label for="colonia">Colonía</label>
+
+            <input type="text" id="colonia" class="form-control @error('colonia') is-invalid @enderror" placeholder="Colonía" value="{{old('colonia')}}">
+            {{-- <div class="invalid-feedback">
+                {{$message}}
+            </div> --}}
+        </div>
+        <input type="hidden" id="lat" name="lat" value="{{old('lat')}}">
+        <input type="hidden" id="lng" name="lng" value="{{old('lng')}}">
+        <br>
     </div>
-  </div>
+
+</div>
+<div class="row footer justify-content-center  ">
+    <h5 style="text-shadow: -1px -1px white, 1px 1px #333">Los gastos de envío serán cargados a tu cuenta</h5>
+</div>
+
 </div>
 </div>
     <div class="d-flex justify-content-between mb-8">
@@ -237,8 +282,56 @@
 
     {!! Form::close() !!}
     </div>
+
   </div>
   <br>
+
+
+
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+
+
+<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+  crossorigin=""></script>
+
+
+  <script>
+       document.addEventListener('DOMContentLoaded', () => {
+           if(document.querySelector('#mapa')){
+               const lat = 20.6705778;
+               const lng = -103.4358731;
+               const mapa = L.map('mapa').setView([lat, lng], 16);
+
+               L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                   attribution: '&copy; <a href=" https://www.openstreetmap.org/org/copyringht">OpenStreetMap</a> contributors'
+                }).addTo(mapa);
+                let marker;
+                // agregar el pin
+                marker = new L.marker([lat, lng],{
+                    draggable: true,
+                    autoPan: true
+
+                }).addTo(mapa);
+
+                //Detectar movimiento del market
+                marker.on('moveend', function(e){
+                    marker = e.target;
+
+                    const posicion = marker.getLatLng();
+
+                    //centrar automaticamente
+                    mapa.panTo( new L.LatLng( posicion.lat, posicion.lng ) );
+                });
+            }
+        });
+  </script>
 
 
 

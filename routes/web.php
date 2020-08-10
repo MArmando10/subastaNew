@@ -39,3 +39,5 @@ Route::any('searchsubasta','SubastaController@searchsubasta')   ->name('subasta.
 Route::any('searchhome','HomeController@searchhome')            ->name('home.search')->middleware('auth'); //buscar home
 
 Route::get('/showimage','ImageController@showImage')->middleware('auth');
+
+// Route::get('/products/{{categoria}}', 'ProductController@categoria');

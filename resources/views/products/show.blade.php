@@ -188,7 +188,7 @@ $index=0;
     @endif
         <div class="col-lg-4 tam">
             <h1 class="font-weight-bold "></h1>
-            <p class="text-success font-weight-bold">Envio gratis</p>
+            <p class="text-success font-weight-bold">Envío</p>
             <p>vendido por: user_1</p>
             <h2 class="text-primary font-weight-bold">${{ $product->ofertas()->max('oferta') }} GOI</h2>
             <p>Fecha de entrega estimada: 15 de junio </p>
@@ -199,8 +199,8 @@ $index=0;
 <div class="row" style="justify-content: center;">
     <section class="bord col-lg-8 col-10" style="justify-content: center;  padding: 30px; border: double">
         <div class="col-lg-8" >
-            <h1>Dirección de entrega</h1>
-            <h3>Av. Patria #512, Prados Vallarta, 45020, Zapopan, Jalisco, Mexico</h3>
+            <h1><strong> Dirección de entrega</strong></h1>
+            <h3><i class="fas fa-map-marker-alt" style="color: red; width: 20px;"></i> Av. Patria #512, Prados Vallarta, 45020, Zapopan, Jalisco, Mexico</h3>
         </div>
     </section>
 </div>

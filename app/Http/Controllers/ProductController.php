@@ -188,16 +188,17 @@ class ProductController extends Controller
         // dd($request);
         $anterior = $request->all();
 
-       $buscar = Product::when($request->categoria,function($query, $request){return $query->where('categoria','like', '%'. $request .'%');})
-                                     ->orderBy('categoria', 'ASC')
+       $buscar = Product::when($request->categoria,function($query, $request){return $query->where('nombre','like', '%'. $request .'%');})
+                                     ->orderBy('nombre', 'ASC')
                                      ->Paginator::defaultSimpleView('products.index')
                                      ->setPath ( '' );
 
                 $buscar->appends ( array (
-                 'categoria' => $request->categoria
+                 'nombre' => $request->categoria
                 ) );
 
        }
+
 
 
         public function getLicenseExpireAttribute($tiempo)

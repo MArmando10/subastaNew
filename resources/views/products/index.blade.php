@@ -11,11 +11,11 @@
         <div class="row justify-content-center" >
             <div class="form-group col-md-3 col-2">
                 @if(!$anterior)
-                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="buscar" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="nombre" type="search" placeholder="Buscar por Categoría" aria-label="Search">
             </div>
                 @else
                 <div class="form-group col-md-2">
-                    <input type="search" class="form-control" name="buscar" placeholder="Buscar por Categoria" value="{{ (!$anterior['categoria']) }}">
+                    <input type="search" class="form-control" name="buscar" placeholder="Buscar por Categoria" value="{{ (!$anterior['nombre']) }}">
                     @foreach($categorias as $id => $categoria)
                         <option value="{{ $id }}">{{$categoria}}</option>
                     @endforeach
@@ -57,7 +57,7 @@
                     <h2 class="card-text text-uppercase"><strong>{{$product->marca}}</strong></h2>
                     <p class="card-text id='maximo'">Mejor oferta al momento <strong>${{ $product->ofertas()->max('oferta') }}</strong></p>
                     <p class="card-text" id="maximo">({{count($product->ofertas)}} ofertas de subasta)</p>
-                    <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p>
+                    {{-- <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p> --}}
                 </div>
                 <div class="col tam">
                     <p class="card-text"><strong> Finalizacion de la subasta:</strong> {{$product->fechaFinal}}</p>
