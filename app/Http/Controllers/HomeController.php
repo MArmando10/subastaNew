@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Product;
-use \App\Image;
+use \App\Offers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class HomeController extends Controller
 {
@@ -28,11 +29,22 @@ class HomeController extends Controller
     {
         $isGame = true;
         // $product = \App\Product::paginate(15);
-        $products = \App\Product::all();
+
+        $bestOffers = collect();
+        $products = Product::all();
+
+        foreach($products as $product){
+            if(count($product->ofertas) > 0){
+                $bestOffers->push($product->ofertas()->orderBy('oferta', 'desc')->first());
+            }
+        }
+
+        $bestOffers = $bestOffers->sortBy('oferta');
+
         $users = \App\User::all();
         // dd($users);
         $anterior = [];
-        return view('home3',compact('anterior','products','users'));
+        return view('home3',compact('anterior','products','users','bestOffers'));
     }
 
 }

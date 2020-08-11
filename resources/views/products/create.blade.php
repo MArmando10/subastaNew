@@ -219,15 +219,7 @@
 <br><br>
   <!-- ubicacion del articulo -->
   <div class="form-group row" style="justify-content: center">
-    {{-- {{ Form::label('Ubicacion del artículo', null, ['class' => 'col-sm-2 col-form-label']) }}
-    <div class="col-sm-8" >
-      <div class="input-group" >
-        {{ Form::text('geografi', '', ['aria-label'=> 'Dollar amount (with dot and two decimal places)', 'class' => 'form-control']) }}
-      </div> <!-- boton cambiar ubicacion -->
-      {{-- <button type="button" class="btn btn-light">Cambiar</button>
-    </div> --}}
-
-    <fieldset class="border p-4">
+    <fieldset class="border p-3 mb-4">
         <legend class="text-primary">Ubicación</legend>
 
         <div class="form-group">
@@ -291,18 +283,25 @@
 
 
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-  crossorigin=""/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"/>
 
 
 
 <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
+  <script src="https://unpkg.com/esri-leaflet"></script>
+  <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
 
 
   <script>
+
+    //   import { OpenStreetMapProvider } from 'leaflet-geosearch';
+    //   const provider = new OpenStreetMapProvider();
+
        document.addEventListener('DOMContentLoaded', () => {
            if(document.querySelector('#mapa')){
                const lat = 20.6705778;
@@ -320,15 +319,56 @@
 
                 }).addTo(mapa);
 
+                //Geocode service
+                const geocodeService = L.esri.Geocoding.geocodeService();
+
+                //buscador de direcciones
+                const buscador = document.querySelector('#formbuscador');
+                buscador.addEventListener('input', buscarDireccion);
+
                 //Detectar movimiento del market
                 marker.on('moveend', function(e){
                     marker = e.target;
 
                     const posicion = marker.getLatLng();
+                    // console.log(marker.getLatLng())
 
                     //centrar automaticamente
                     mapa.panTo( new L.LatLng( posicion.lat, posicion.lng ) );
+
+                    //Reverse Geocoding, cuando el usuario reubica el pin
+                    geocodeService.reverse().latlng(posicion, 16).run(function(error, resultado){
+                        // console.log(error);
+
+                        // console.log(resultado.address);
+
+                        marker.bindPopup(resultado.address.LongLabel);
+                        marker.openPopup();
+
+                        //llenar los campos
+                        llenarInputs(resultado);
+                    })
                 });
+
+                // function buscarDireccion(e) {
+
+                //     if(e.target.value.length > 1) {
+                //         provider.search({query: e.target.value})
+                //         .then( resultado => {
+                //             console.log(resultado[0].bounds[0]);
+                //         })
+                //     }
+
+                // }
+
+                function llenarInputs(resultado) {
+                     console.log(resultado);
+                    document.querySelector('#direccion').value = resultado.address.Address || '';
+                    document.querySelector('#colonia').value = resultado.address.Neighborhood || '';
+                    document.querySelector('#lat').value = resultado.latlng.lat || '';
+                    document.querySelector('#lng').value = resultado.latlng.lng || '';
+
+                }
             }
         });
   </script>

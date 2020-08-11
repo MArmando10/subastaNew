@@ -92,7 +92,7 @@
             <div class="item">
                 @foreach($products as $product)
                 <div class="col-sm-2">
-                    <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 70%;">
+                    {{-- <img class="d-block bg-ter bord" src="{{asset($product->imagenes[0]->url)}}" alt="First slide" style="width: 70%;"> --}}
                 </div>
                 @endforeach
                 {{-- <div class="col-sm-3" ><img class="d-block bg-ter   bord" src="storage/auto.jpeg" alt="First slide" style="width: 100%;"></div>
