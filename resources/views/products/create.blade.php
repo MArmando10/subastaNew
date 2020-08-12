@@ -226,7 +226,7 @@
             <label for="formbuscador">Coloca la dirección donde se encuentra el producto</label>
             <input type="text" id="formbuscador" class="form-control" placeholder="Calle del Establecimiento">
 
-            <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una direccion estimada, mueve el Pin hacia el lugar correcto</p>
+            <p class="text-secondary mt-5 mb-3 text-center">El asistente colocará una direccion estimada o mueve el Pin hacia el lugar correcto</p>
         </div>
     </fieldset>
 
@@ -241,24 +241,16 @@
 
         <div class="form-group">
             <label for="direccion">Dirección</label>
-
             <input type="text" id="direccion" class="form-control @error('direccion') is-invalid @enderror" placeholder="Dirección" value="{{old('direccion')}}">
-            {{-- <div class="invalid-feedback">
-                {{$message}}
-            </div> --}}
         </div>
 
         <div class="form-group">
             <label for="colonia">Colonía</label>
-
             <input type="text" id="colonia" class="form-control @error('colonia') is-invalid @enderror" placeholder="Colonía" value="{{old('colonia')}}">
-            {{-- <div class="invalid-feedback">
-                {{$message}}
-            </div> --}}
         </div>
-        <input type="hidden" id="lat" name="lat" value="{{old('lat')}}">
-        <input type="hidden" id="lng" name="lng" value="{{old('lng')}}">
-        <br>
+            <input type="hidden" id="lat" name="lat" value="{{old('lat')}}">
+            <input type="hidden" id="lng" name="lng" value="{{old('lng')}}">
+            <br>
     </div>
 
 </div>
@@ -280,27 +272,27 @@
 
 
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+  integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+  crossorigin=""/>
+
+  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css" />
+  {{-- <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"/> --}}
 
 
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
-
-  <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder/dist/esri-leaflet-geocoder.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet-geosearch@3.0.0/dist/geosearch.css"/>
-
-
-
-<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
   integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
   crossorigin=""></script>
-  <script src="https://unpkg.com/esri-leaflet"></script>
-  <script src="https://unpkg.com/esri-leaflet-geocoder"></script>
+
+  <script src="https://unpkg.com/esri-leaflet" defer></script>
+  <script src="https://unpkg.com/esri-leaflet-geocoder" defer></script>
 
 
   <script>
 
-    //   import { OpenStreetMapProvider } from 'leaflet-geosearch';
-    //   const provider = new OpenStreetMapProvider();
+    import { openStreetMapProvider } from 'leaflet-geosearch';
+    const provider = new openStreetMapProvider();
 
        document.addEventListener('DOMContentLoaded', () => {
            if(document.querySelector('#mapa')){
@@ -308,66 +300,108 @@
                const lng = -103.4358731;
                const mapa = L.map('mapa').setView([lat, lng], 16);
 
+               //eliminar pines previos
+               let markers = new L.FeatureGroup().addTo(mapa);
+
                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                    attribution: '&copy; <a href=" https://www.openstreetmap.org/org/copyringht">OpenStreetMap</a> contributors'
                 }).addTo(mapa);
+
                 let marker;
+
                 // agregar el pin
                 marker = new L.marker([lat, lng],{
                     draggable: true,
                     autoPan: true
-
                 }).addTo(mapa);
 
-                //Geocode service
+                //agregar el pin a las capas
+                markers.addLayer(marker);
+
+                //geocode service
                 const geocodeService = L.esri.Geocoding.geocodeService();
 
-                //buscador de direcciones
+                //Buscador de direcciones
                 const buscador = document.querySelector('#formbuscador');
-                buscador.addEventListener('input', buscarDireccion);
+                buscador.addEventListener('blur', buscarDireccion);
 
-                //Detectar movimiento del market
-                marker.on('moveend', function(e){
-                    marker = e.target;
+                reubicarPin(marker);
 
-                    const posicion = marker.getLatLng();
-                    // console.log(marker.getLatLng())
 
-                    //centrar automaticamente
-                    mapa.panTo( new L.LatLng( posicion.lat, posicion.lng ) );
+                function reubicarPin(marker) {
 
-                    //Reverse Geocoding, cuando el usuario reubica el pin
-                    geocodeService.reverse().latlng(posicion, 16).run(function(error, resultado){
-                        // console.log(error);
+                    //Detectar movimiento del marker
+                      marker.on('moveend', function(e) {
+                          marker = e.target;
+                          const posicion = marker.getLatLng();
+                        //   console.log(posicion);
+                        // console.log(marker.getLatLng() );  //muestra la lactitud y longitud
 
-                        // console.log(resultado.address);
+                        //centrar automaticamente
+                        mapa.panTo( new L.latLng( posicion.lat, posicion.lng) );
 
-                        marker.bindPopup(resultado.address.LongLabel);
-                        marker.openPopup();
+                        //Reverse Geocoding, cuando el usuario reubica el pin
+                        geocodeService.reverse().latlng(posicion, 16).run(function(error, resultado) {
 
-                        //llenar los campos
-                        llenarInputs(resultado);
-                    })
-                });
+                            // console.log(error);
 
-                // function buscarDireccion(e) {
+                            // console.log(resultado.address);
 
-                //     if(e.target.value.length > 1) {
-                //         provider.search({query: e.target.value})
-                //         .then( resultado => {
-                //             console.log(resultado[0].bounds[0]);
-                //         })
-                //     }
+                            marker.bindPopup(resultado.address.LongLabel);
+                            marker.openPopup();
 
-                // }
+                            //llenar los campos
+                            llenarInputs(resultado);
+                        })
+                    });
+                }
+
+                function buscarDireccion(e) {
+                    if (e.target.value.lenght > 1) {
+                        provider.search({query: e.target.value = ' Guadalajara MX '})
+                        .then( resultado => {
+                            if (resultado ) {
+
+                                //limpiar los pines previos
+                                markers.clearLayers();
+
+                                //Reverse Geocoding, cuando el usuario reubica el pin
+                                geocodeService.reverse().latlng(resultado[0].bounds[0], 16).run(function(error, resultado) {
+
+                                    //llenar los inputs
+                                    llenarInputs(resultado);
+
+                                    //centrar el mapa
+                                    mapa.setView(resultado.latlng);
+
+                                    //agregar el pin
+                                    marker = new L.marker(resultado.latlng, {
+                                        draggable:true,
+                                        autoPan: true
+                                    }).addTo(mapa);
+
+                                    //asignar el contenedor de markers el nuevo pin
+                                    markers.addLayer(marker);
+
+                                    //mover el pin
+                                    reubicarPin(marker);
+                                })
+                            }
+
+                        })
+                        .catch( error => {
+                            // console.log(error)
+                        })
+                    }
+                    // console.log(e.target)
+                }
 
                 function llenarInputs(resultado) {
-                     console.log(resultado);
+                    console.log(resultado);
                     document.querySelector('#direccion').value = resultado.address.Address || '';
                     document.querySelector('#colonia').value = resultado.address.Neighborhood || '';
                     document.querySelector('#lat').value = resultado.latlng.lat || '';
                     document.querySelector('#lng').value = resultado.latlng.lng || '';
-
                 }
             }
         });
