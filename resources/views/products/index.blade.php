@@ -56,12 +56,12 @@
                 <div class="col info letra tam">
                     <h2 class="card-text text-uppercase"><strong>{{$product->marca}}</strong></h2>
                     <p class="card-text id='maximo'">Mejor oferta al momento <strong>${{ $product->ofertas()->max('oferta') }}</strong></p>
-                    <p class="card-text" id="maximo">({{count($product->ofertas)}} ofertas de subasta)</p>
+                    <p class="card-text" id="maximo">({{count($product->ofertas)}} oferta/s de subasta)</p>
                     {{-- <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p> --}}
                 </div>
                 <div class="col tam">
                     <p class="card-text"><strong> Finalizacion de la subasta:</strong> {{$product->fechaFinal}}</p>
-                    <p class="card-text">De: {{$product->geografi}}</p>
+                    <p class="card-text"><strong> De: </strong> {{$product->direccion}}</p>
                     <p class="card-text">{{$product->Destino}}</p>
                 </div>
                 <div class="col float-right align-self-end">

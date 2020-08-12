@@ -30,7 +30,11 @@ class CreateProductsTable extends Migration
             $table->float('Ancho');
             $table->float('Largo');
             $table->float('Peso');
-            $table->string('geografi');
+            // $table->string('geografi')->nullable();
+            $table->string('lat');
+            $table->string('lng');
+            $table->string('direccion')->nullable();
+            $table->string('colonia')->nullable();
             $table->integer('status')->default(1);
             $table->foreignId('user_id');
 

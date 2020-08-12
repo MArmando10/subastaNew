@@ -61,16 +61,16 @@
                                 <div class="col info letra tam">
                                     <h2 class="card-text text-uppercase"><strong>{{$product->marca}}</strong></h2>
                                     <p class="card-text "><strong>${{ $product->ofertas()->max('oferta') }}__ GOI Mejor oferta al momento </strong></p>
-                                    <p class="card-text">(81 ofertas de subasta)</p>
-                                    <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p>
+                                    <p class="card-text">({{count($product->ofertas)}}oferta/s de subasta)</p>
+                                    {{-- <p class="text-success font-weight-bold" style="color: chartreuse">Envio gratis</p> --}}
                                 </div>
 
                                 <div class="row">
                                     <div class="col tam">
                                         <p class="card-text"><strong>Finalizacion de la subasta:</strong> {{$product->fechaFinal}}</p>
-                                        <p class="card-text">De: Guadalajara. Jal.</p>
+                                        <p class="card-text"><strong> De: </strong> {{$product->direccion}}</p>
                                         <p class="card-text">México</p>
-                                        <p class="card-text">Envió Nacional</p>
+                                        {{-- <p class="card-text">Envió Nacional</p> --}}
                                     </div>
                                 </div>
                                 <div class="col float-right align-self-end">

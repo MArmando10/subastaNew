@@ -25,7 +25,7 @@
        <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="categoria" type="text" placeholder="Buscar por Categoría" aria-label="Search">
     </div>
     @else
-    <div class="form-group col-md-2 ">
+    <div class="form-group col-md-3 ">
         <input type="text" class="form-control" name="Categoria" placeholder="Buscar por Categoria" value="{{ (!$anterior['Categoria']) ? '' : $anterior['Categoria']}}">
     </div>
     @endif
@@ -43,11 +43,11 @@
         <button type="button" href="product.index">Categorias</button>
     </div> --}}
 
-    <div class="col-2">
+    {{-- <div class="col-2">
         {{ Form::label('Agregar Categoría', null, ['class' => 'col-sm-2 col-form-label']) }}
         {{ Form::number('', '', ['class' => 'form-control']) }}
         {{ Form::select('Agregar', ['class' => 'agregar']) }}
-    </div>
+    </div> --}}
 
 </div>
     <br>

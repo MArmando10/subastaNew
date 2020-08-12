@@ -33,7 +33,8 @@
 
       {!! Form::open(['action' => 'ProductController@store', 'method' => 'post', 'files' => true], ['class' => 'inline-form']) !!}
 
-        {{-- {{$errors}} --}}
+        {{$errors}}
+        @csrf
       <div class="form-group col-12">
         <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de producto</h3>
 
@@ -241,12 +242,12 @@
 
         <div class="form-group">
             <label for="direccion">Dirección</label>
-            <input type="text" id="direccion" class="form-control @error('direccion') is-invalid @enderror" placeholder="Dirección" value="{{old('direccion')}}">
+            <input type="text" id="direccion" name="direccion" class="form-control @error('direccion') is-invalid @enderror" placeholder="Dirección" value="{{old('direccion')}}">
         </div>
 
         <div class="form-group">
             <label for="colonia">Colonía</label>
-            <input type="text" id="colonia" class="form-control @error('colonia') is-invalid @enderror" placeholder="Colonía" value="{{old('colonia')}}">
+            <input type="text" id="colonia" name="colonia" class="form-control @error('colonia') is-invalid @enderror" placeholder="Colonía" value="{{old('colonia')}}">
         </div>
             <input type="hidden" id="lat" name="lat" value="{{old('lat')}}">
             <input type="hidden" id="lng" name="lng" value="{{old('lng')}}">
@@ -291,8 +292,8 @@
 
   <script>
 
-    import { openStreetMapProvider } from 'leaflet-geosearch';
-    const provider = new openStreetMapProvider();
+    // import { SearchControl, OpenStreetMapProvider } from 'leaflet-geosearch'
+    // const provider = new openStreetMapProvider();
 
        document.addEventListener('DOMContentLoaded', () => {
            if(document.querySelector('#mapa')){
@@ -316,7 +317,7 @@
                 }).addTo(mapa);
 
                 //agregar el pin a las capas
-                markers.addLayer(marker);
+                // markers.addLayer(marker);
 
                 //geocode service
                 const geocodeService = L.esri.Geocoding.geocodeService();
@@ -325,10 +326,10 @@
                 const buscador = document.querySelector('#formbuscador');
                 buscador.addEventListener('blur', buscarDireccion);
 
-                reubicarPin(marker);
+                // reubicarPin(marker);
 
 
-                function reubicarPin(marker) {
+                // function reubicarPin(marker) {
 
                     //Detectar movimiento del marker
                       marker.on('moveend', function(e) {
@@ -354,7 +355,7 @@
                             llenarInputs(resultado);
                         })
                     });
-                }
+                // }
 
                 function buscarDireccion(e) {
                     if (e.target.value.lenght > 1) {

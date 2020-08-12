@@ -63,6 +63,7 @@ class ProductController extends Controller
      */
     public function store(Request $request, Product $product)
     {
+
         if ($request->user())
         {
         $request->validate([
@@ -82,10 +83,14 @@ class ProductController extends Controller
             'Ancho'=>'required',
             'Largo'=>'required',
             'Peso'=>'required',
-            'geografi' => 'required',
+            'lat'=>'required',
+            'lng'=>'required',
+            'direccion'=>'required',
+            'colonia'=>'required',
+            // 'geografi' => 'required',
             'images' => 'required',
             ]);
-        //dd($request);
+        // dd($request);
         $files = $request->file('images');
 
 
@@ -107,8 +112,13 @@ class ProductController extends Controller
         $producto->Ancho =request()->input('Ancho');
         $producto->Largo =request()->input('Largo');
         $producto->Peso =request()->input('Peso');
-        $producto->geografi =request()->input('geografi');
+        $producto->lat =request()->input('lat');
+        $producto->lng =request()->input('lng');
+        $producto->direccion =request()->input('direccion');
+        $producto->colonia =request()->input('colonia');
+        // $producto->geografi =request()->input('geografi');
         $producto->user_id = Auth::user()->id;
+
 
         $producto->save();
 
