@@ -29,16 +29,18 @@ class ProductController extends Controller
     {
 
             // $products = product::paginate(5);
-            $products = DB::table('products')->paginate(5);
+            $products = \DB::table('products')->paginate(5);
             // dd($products);
             // $categoria = \App\Categoria::all();
             $Product = \App\Product::all();
             $offer = \App\Offers::all();
             $Users = \App\User::all();
-            $categorias = \App\Categoria::all();
+            $categoria = \App\Categoria::all();
+
+
             $anterior = [];
 
-            return view('products.index',compact('Users','Product','products','offer','anterior','categorias'));
+            return view('products.index',compact('Users','Product','products','offer','anterior','categoria'));
         }
 
 
@@ -63,7 +65,7 @@ class ProductController extends Controller
      */
     public function store(Request $request, Product $product)
     {
-
+        // dd($request);
         if ($request->user())
         {
         $request->validate([
@@ -118,7 +120,7 @@ class ProductController extends Controller
         $producto->colonia =request()->input('colonia');
         // $producto->geografi =request()->input('geografi');
         $producto->user_id = Auth::user()->id;
-
+            dd($request->Alto);
 
         $producto->save();
 
@@ -198,13 +200,13 @@ class ProductController extends Controller
         // dd($request);
         $anterior = $request->all();
 
-       $buscar = Product::when($request->categoria,function($query, $request){return $query->where('nombre','like', '%'. $request .'%');})
+       $buscar = Product::when($request->categorias,function($query, $request){return $query->where('nombre','like', '%'. $request .'%');})
                                      ->orderBy('nombre', 'ASC')
                                      ->Paginator::defaultSimpleView('products.index')
                                      ->setPath ( '' );
 
                 $buscar->appends ( array (
-                 'nombre' => $request->categoria
+                 'nombre' => $request->categorias
                 ) );
 
        }

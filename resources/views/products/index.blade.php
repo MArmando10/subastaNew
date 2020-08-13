@@ -5,19 +5,47 @@
 
 <div class="row col-lg-6 justify-content-center" ><h1><strong> Estas en productos</strong></h1></div>
 
+
+{{--
+<div id="nav-seach">
+    <div id="nav-bar-left"></div>
+    <form accept-charset="utf-8" action="/s/ref=nb_sb_noss" class="nav-searchbar" method="get" name="site-search" role="search">
+        <input type="hidden" name="__mk_es_MX" value="Categoria">
+        <div class="nav-left">
+            <div id="nav-search-dropdown-card">
+                <div class="nav-search-scope nav-prite">
+                    <div class="nav-search-facade" data-value="search-alias=aps">
+                        <span class="nav-search-label" style="width: auto;">{{$categorias}}</span>
+                    <i class="nav-icon"></i>
+                    </div>
+                    <span id="searchDropdownDescription" style="display: none">Seleccionar la categoria que deseas buscar</span>
+                    <select aria-describedby="searchDropdownDescription" class="nav-search-dropdown searchSelect" data-nav-digest="sLIwIAYT1f4gYs2ewzSrEu0+QWE=" data-nav-selected="2" id="searchDropdownBox" name="url" style="display: block; top: 2.5px;" tabindex="0" title="Buscar en">
+                        <option value="search"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div> --}}
+
+{{-- {{dd($categorias)}} --}}
 <div class="row-3" style="margin: 65px; padding: 30px">
     <div class="col-lg-6" style="min-width: 100%;">
 
         <div class="row justify-content-center" >
             <div class="form-group col-md-3 col-2">
                 @if(!$anterior)
-                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="nombre" type="search" placeholder="Buscar por Categoría" aria-label="Search">
+                <div class="nav-search-facade" data-value="search-alias=aps">
+                    <span class="nav-search-label" style="width: auto;">{{$categoria}}</span>
+                <i class="nav-icon"></i>
+                </div>
+                <input size="45" class="redondeado confondo form-control form-control-lg ml-2 w-40" name="categoria" type="search" placeholder="Buscar por Categoría" aria-label="Search">
             </div>
                 @else
                 <div class="form-group col-md-2">
-                    <input type="search" class="form-control" name="buscar" placeholder="Buscar por Categoria" value="{{ (!$anterior['nombre']) }}">
-                    @foreach($categorias as $id => $categoria)
-                        <option value="{{ $id }}">{{$categoria}}</option>
+                    <input type="search" class="form-control" name="categorias" placeholder="Buscar por Categoria" value="{{ (!$anterior['categories']) }}">
+                    @foreach($categorias as $categoria)
+                        <option value="{{ $id }}">{{$categorias->nombre}}</option>
                     @endforeach
                 </div>
                 @endif

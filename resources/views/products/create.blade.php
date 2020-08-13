@@ -112,9 +112,25 @@
         <h3 class="font-weight-bold" style="font-size: 2rem">Detalles de la venta</h3>
         <div class="form-group row">
           {{ Form::label('Duración', null, ['class' => 'col-sm-2 col-form-label']) }}
-          <div class="col-sm-10">
+           <div class="col-sm-10">
             {{ Form::select('duracion', ['1' => '1 Día', '2' => '2 Días', '3' => '3 Días', '4' => '7 Días', '5' => '15 Días'], 'duracion', ['class' => 'form-control']) }}
           </div>
+
+
+{{--
+            <label for="txtduracion">Duración</label>
+            <div class="form-group col-sm-10">
+            <select class="form-control form-control-chosen-required {{$errors->first('duracion') ? 'has-error' : ''}}" id="txtdiracion" placeholder="Ingrese la Duración del producto" name="duracion" required >
+             @if(!old('duracion') || old('duracion') == 'Elige...')  <option selected>Elige...</option> @endif
+
+              <option value="0" {{old('duracion') == '0' ? 'selected' : ''}}>1 Día</option>
+              <option value="1" {{old('duracion') == '1' ? 'selected' : ''}}>2 Día</option>
+              <option value="2" {{old('duracion') == '2' ? 'selected' : ''}}>3 Día</option>
+              <option value="3" {{old('duracion') == '3' ? 'selected' : ''}}>7 Día</option>
+              <option value="3" {{old('duracion') == '3' ? 'selected' : ''}}>15 Día</option>
+            </select>
+            <p class="inputError">{{ $errors->first('duracion') }}</p>
+        </div> --}}
         </div>
 
         <!-- Horario para comenzar -->

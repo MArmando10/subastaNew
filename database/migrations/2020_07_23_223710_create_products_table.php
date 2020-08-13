@@ -26,10 +26,10 @@ class CreateProductsTable extends Migration
             $table->integer('cantidad');
             // $table->boolean('refundSwitch');
             $table->string('Destino');
-            $table->float('Alto');
-            $table->float('Ancho');
-            $table->float('Largo');
-            $table->float('Peso');
+            $table->bigInteger('Alto');
+            $table->bigInteger('Ancho');
+            $table->bigInteger('Largo');
+            $table->bigInteger('Peso');
             // $table->string('geografi')->nullable();
             $table->string('lat');
             $table->string('lng');
